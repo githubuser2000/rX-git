@@ -1,0 +1,468 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+
+\usepackage{fancyhdr} 
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+fixltx2e
+\end_modules
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans helvet
+\font_typewriter default
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2.5cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Praktikumsbericht Alexander Kern, MNr.: 43524
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Das Unternehmen
+\end_layout
+
+\begin_layout Standard
+Das Unternehmen trägt den Namen CEITON Technologies GmbH und wurde im Jahr
+ 2000 gegründet.
+ Geographisch liegt sie im Zentrum von Leipzig an der Thomaskirche.
+ Es gibt 18 Mitarbeiter.
+ Ceiton hat eine Zweigstelle in Burbank in der USA.
+ Der Name Ceiton leitet sich aus dem japanischen Wort Seiton (= Ordnung)
+ ab, worauf (Ordnung) die Softwarelösung dieses Unternehmens abzielt.
+ Schwerpunkte des Tätigkeitsumfelds dieser Firma sind die Beratung und Analyse
+ von Geschäftsprozessen, die Entwicklung eines Workflow-Systems (CEITON’s
+ Web Workflow PPS und CTWS) für automatisierte Workflows und Workflows die
+ mit Menschen interagieren, das führende 3D-webbasierte Workflow-Management-Syst
+em.
+ Kunden von Ceiton sind z.B.Sony DADC, Red Bull Media House, A&E International,
+ Warner Bros.
+ Technical Operations und das Erste Deutsche Fernsehen (MDR, RBB, WDR).
+ Das Web Workflow PPS kann eingesetzt werden für Produktionsplanung und
+ -steuerung besonders in Unternehmen der Medien- oder Unterhaltungsbranche.Tobias
+ Soppa ist der Geschäftsführer, Gründer und Eigentümer der Firma und Chris
+ Rosenbusch ist in der Firma mein Betreuer und auch der Vorgesetzte der
+ anderen Mitarbeiter.
+\end_layout
+
+\begin_layout Section
+Warum ich das Unternehmen ausgewählt habe und Erwartungen
+\end_layout
+
+\begin_layout Standard
+Ich wurde auf Ceiton aufmerksam durch die Empfehlung eines Freundes.
+ Ich habe nach einem Praktikum gesucht, mit welchem ich Bachelorarbeit kombinier
+en kann.
+ Dass ich jedoch beides in einem absolvieren werde, habe ich nicht erwartet.
+ Ich habe Ceiton auch ausgewählt, weil ich freundliche Mitarbeiter gesucht
+ habe.
+ Das Thema hat mich besonders interessiert, da es eine hohe Bedeutung in
+ der Wirtschaft hat und die Effektivität oder Effizienz der Unternehmen
+ steigert.
+ Hilfe von Kollegen habe ich nicht viel erwartet, da ich mir gedacht habe
+ dass diese unter Zeitdruck stehen und ich Erfahrungen von Ellenbogenmentalitäte
+n gesammelt habe, jedoch nicht im Unternehmen Ceiton.
+ Eine Erwartung an mich ist es, dass meine Ergebnisse einen Nutzen für das
+ Unternehmen Ceiton haben.
+\end_layout
+
+\begin_layout Section
+Tätigkeitsumfeld
+\end_layout
+
+\begin_layout Standard
+Ich konnte an verschiedenen Orten arbeiten.
+ Ich arbeite fast nur selbstständig.
+ Jedoch tauchen ab und an immer wieder Fragen auf, die ich mit Hilfe von
+ sehr netten Kollegen gut klären kann.
+ Mein Vorgesetzter gibt mir auch einen sehr groben Weg vor.
+ Letztendlich muss ich jedoch eine eigene Systematik erarbeiten, wie ich
+ die Bachelorarbeit angehe.
+\end_layout
+
+\begin_layout Section
+Vorkenntnisse
+\end_layout
+
+\begin_layout Standard
+Meine Kenntnisse im Bereich der Programmierung im Kleinen sind nützlich
+ für das Verständnis der so genannten Programmierung im Großen.
+ Meine Kenntnisse von Mustern der Programmierung im Kleinen helfen beim
+ Verständnis von Mustern der Programmierung im Großen.
+ Langjährige Erfahrungen in der Recherche mit Suchmaschinen und in Bücherkatalog
+en sind sehr nützlich gewesen.
+ Erfahrungen im Umgang mit der Primärliteratur eines Standards konnte ich
+ nicht nachweisen, womit ich mich anfangs schwer getan habe.
+ Im Masterstudium der allgemeinen Informatik an der HTWK gibt es erst das
+ Fach Informationssysteme, in denen BPM Standards behandelt werden und Aspekte
+ meiner Bachelorarbeit angerissen werden.
+ Ich habe jedoch Zugriff auf das Skript durch und von Professor Doktor Kudraß.
+ Ich bin im Besitz der Erfahrung eine Belegarbeit mit jemandem zusammen
+ verfasst zu haben im Fachbereich Physik über CD-ROM-Technologien auf einem
+ Gymnasium vor 12 Jahren und einen weiteren größeren Text im Fach IT-Sicherheit
+ bei Professor Doktor Petermann.
+ Kenntnisse von und um XML sind nützlich für die Grundlagen der meisten
+ Standards.
+ Meine Englischkenntnisse, die ich privat oft auffrische waren nützlich,
+ da ich viel englische Primär- und Sekundärliteratur lesen muss.
+\end_layout
+
+\begin_layout Section
+Aufgaben und Ziele und Dauer
+\end_layout
+
+\begin_layout Standard
+Mein Praktikum dauert 19 Wochen und hat einen 5-stündigen Arbeitstag.
+ Ziel dieser Bachelorarbeit soll für Ceiton ein Erkenntniszugewinn sein,
+ darüber was für eine Grundlage die Softwarelösung von Ceiton in Zukunft
+ haben werden sollte.
+ Das Thema ist die Suche des optimalen Standards einer Prozessbeschreibungssprac
+he.
+ Mein persönliches Ziel ist das Gewöhnen an eine langfristig selbstständige
+ Tätigkeit, wobei ich immer motiviert sein muss.
+ Ich habe das Ziel regelmäßig meinen Plan zu erweitern, ein Wochenziel zu
+ bestimmen, kurzfristige und langfristige Entscheidungen in meinem Vorgehen
+ zu treffen, zu erlernen wissenschaftlich zu arbeiten.
+\end_layout
+
+\begin_layout Section
+Tätigkeiten und Arbeitsergebnisse
+\end_layout
+
+\begin_layout Standard
+Folgende Abschnitte sind nicht nach dem Sinnzusammenhang gegliedert, sondern
+ nach Arbeitseinheiten von ungefähr einer Woche, jedoch trifft dieser Zeitraum
+ nicht in jedem Fall zu.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich habe mir vor dem Praktikumsbeginn ein BPEL Buch bestellt und kleine
+ Teile davon abgearbeitet und in Suchmaschinen nach BPEL und Wf-XML gesucht,
+ um herauszufinden, ob das Thema ok für mich ist.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Zu beginn des Praktikums habe ich zur Einarbeitung nach allen wichtigen
+ Fachbegriffen gesucht.
+ So habe ich damit alle Prozessbeschreibungssprachen bzw.
+ Orchestrierungssprachen und Choreographiesprachen die erwähnenswert sind
+ gefunden, Texte über BPM(S)-Lösungen, Vergleiche zwischen Standards.
+ Ich habe mit den einfachsten Fachbegriffen begonnen, die ich in Wikipedia
+ nachgeschlagen habe.
+ Das BPEL 2.0 Buch begann ich recht früh zu lesen, da es auch einen grundsätzlich
+en Einblick in die Materie liefert.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Weiterhin habe ich mir ein Buch über BPMN 2.0 gekauft und jeweils einen großen
+ Teil durchgelesen, da sich auch dieses Buch gut dafür eignet, sich in die
+ gesamte Prozess/Workflow-IT einzuarbeiten.
+ In der deutschen Nationalbibliothek habe ich an einem Tag alle elektronischen
+ Medien untersucht und die entscheidenden Teile davon ausgedruckt und an
+ einem anderen Tag durchgelesen und schließlich sortiert nach Relevanz.
+ Schließlich muss ich die Informationen korrekt zitieren, und das darf nicht
+ aus Wikipedia und Konsorten stammen.
+ Am darauf folgenden Tag habe ich nicht elektronische Bücher angelesen und
+ davon wichtige Teile kopiert, die nutzbar für die Bachelorarbeit sind.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich war einen Tag krank.
+ Zwischendurch habe ich die heruntergeladenen Dokumente sortiert und meine
+ Notizen in meinem selbst programmierten Notiz-Verwaltungsprogramm eingebunden.
+ Ich war 2 Tage in der deutschen Nationalbibliothek, um dort meine Recherche
+ fortzusetzen.
+ Ich habe begonnen heruntergeladene Diplomarbeiten durchzulesen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Protokolliert wurden von mir welche Seiten und Überschriften und Textfragmente
+ geeignet sind zum Weiterverarbeiten in meiner Bachelorarbeit.
+ Dabei habe ich Erklärungen zurande genommen und Modelle für Evaluierungen.
+ Wichtige Teile aus Zusammenfassungen und Fazits habe ich dokumentiert.
+ Schließlich wurden alle relevanten Textteile in der vorläufige Bachelorarbeit
+ kopiert, die grundlegende Definitionen und Basisinformationen liefern für
+ den Anfang der Arbeit.
+ Im späteren Verlauf werden diese Zitate umformuliert.
+ Ich war in der Bibliothek und habe mich dort noch einmal über SOA und Webservic
+es belesen und Dokumente über WSDL und WS-CDL ausgedruckt.
+ Ich bin all meine vorhandenen Kopien von Büchern und elektronischen Medien
+ durchgegangen, damit ich zitieren kann über Grundlegende Informationen
+ über Standards und Begrifflichkeiten.
+ Später werde ich diese direkten Zitate umwandeln in indirekte Zitate und
+ mit Bibtex in Lyx besser verweisen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich habe meine Quellen eingeheftet und sortiert und markiert und für Zitierungen
+ vorbereitet.
+ Alle direkten Zitate wurden in Stichpunkte umgewandelt und eine hierarchische
+ Liste von Vergleichskriterien für die Standards erstellt mithilfe der Quellen
+ und eigener Überlegungen.
+ Diese beiden Dokumente habe ich meinem Vorgesetzten zum Durchlesen per
+ E-Mail geschickt und die Vergleichskriterien Professor Kudraß gegeben.
+ Grundlegendes über BPMN aus dem BPMN Buch wurde in Form von Stichpunkten
+ zur späteren Ausformulierung aufgeschrieben und ich habe mir die Workflowpatter
+n von BPMN durchgelesen für das eigene Verständnis.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Um immer im Arbeitsfluss zu bleiben, habe ich immer dann wenn mir eine Teilaufga
+benstellung für mich eingefallen ist, diese in meinen Plan eingetragen.
+ Nach der Fertigstellung einer Teilaufgabe habe ich überlegt welche der
+ nächsten Aufgaben am sinnvollsten erscheint oder wozu ich eher Lust hätte,
+ damit ich genug Motivation dafür habe.
+ Außerdem habe ich mich einer sehr groben Arbeitsstrategie unterworfen.
+ Sie besagt, dass ich so vorgehe, dass ich zunächst mich in die Breite informier
+e und diese Breiteninformationen niederschreibe.
+ Ich gehe da in die Tiefe, wo es sich lohnt, also BPEL und BPMN, wozu ich
+ jeweils ein Buch gekauft habe.
+ Weiterhin erscheint mir die Vorabbewertung und die Wahl der Eigenanteile
+ der Bachelorarbeit wichtig, da sich dieses Unterfangen als schwierig erweisen
+ könnte bzw.
+ ist der Schwierigkeitsgrad vorab schlecht zu erkennen.
+ Deshalb fange ich einen kleinen Eigenanteil an und zwar die teilweise Betrachtu
+ng von Workflowpatterns der Standards im Vergleich.
+ Schließlich halte ich Rücksprache mit meinem Vorgesetzten, auf welche Standards
+ ich im Verlauf der Bachelorarbeit genauer eingehen soll, um diese zu vergleiche
+n.
+ Ich habe mir ein Sortiment aus wissenschaftlichen Arbeiten zusammengestellt,
+ die für mein Thema relevant sind und damit ich einen Einblick in das Schreiben
+ von wissenschaftlichen Arbeiten erlange.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich habe mich in das Handbuch von Lyx für eine latexbasierte Bachelorarbeit
+ eingelesen und wieder das Buch zum Schreiben von wissenschaftlichen Arbeiten
+ angelesen und den Release Candidate 3 von Lyx 2.0 ausgetestet.
+ Eine erste Gliederung der Bachelorarbeit wurde angefertigt und ich habe
+ mich dabei an vorhandene Diplomarbeiten und an mein Buch über wissenschaftliche
+ Arbeiten gehalten, später an Professor Kudraß Vorgaben.
+ Schließlich bin ich alle meine Kopien von Ressourcen noch einmal durchgegangen,
+ um umfangreichere Beschreibungen für Sprachen, Standards und Vorschriften
+ zu bekommen und schließlich habe ich auch noch einen guten Vergleich von
+ Standards und Sprachen gefunden, den ich mir notiert habe.
+ Zwischendurch sortiere ich meine Dokumente in meiner Notizenhierarchie
+ und in meiner Verzeichnishierarchie.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Nun habe ich den Praktikumsbericht aus meinem selbst programmierten hierarchisch
+en Notizenprogramm entnommen und ihn in Latex mit Lyx umgesetzt.
+ Dies hilft mir dabei Lyx besser kennenzulernen, um so eine Übung für das
+ Schreiben meiner Bachelorarbeit zu bekommen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich habe Texte über die Zukunft der Sprachen formuliert und über Anwendungsfälle.
+ Dazu habe ich weiter recherchiert und die Quellen angegeben.
+ Außerdem habe ich nachträglich aus meinen Notizen die ganzen Quellenangaben
+ in der Bachelorarbeit eingetragen.
+ Ich habe Texte übersetzt über die Muster in der Programmierung im Großen
+ mit Prozessbeschreibungssprachen.
+ Viel an den Tabellen wurde geändert.
+ Tabellenverzeichnis wurde erstellt.
+ Mehrere Bugs der RC3 Version des Textverarbeitungsprogramms Lyx mit Latex
+ wurden umgangen.
+ Das war zeitintensiv.
+ Am Ausdruck an verschiedenen Textstellen wurde gefeilt.
+ Ein Abschnitt über Wf-XML wurde hinzugefügt, größtenteils mit Originalzitaten.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich habe den Glossar erstellt, das Schreiben zum Aufgabengebiet erweitert,
+ die Unterscheidung und Einteilung von Sprachen beschrieben, den Aufbau
+ der Arbeit formuliert, das Kapitel über Wf-XML vollständig überarbeitet.
+ Der Abschnitt über Editoren bzw.
+ Modellierern wurde geschrieben.
+ Ein Abschnitt über Beispiele zu allen relevanten Sprachen wurde erstellt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Rechtschreibung habe ich kontrolliert und an Formulierungen nachgebessert.
+ Das hinterste Kapitel habe ich niedergeschrieben.
+ Kopf- und Fußzeilen wurden hinzugefügt und am Aussehen wurde gearbeitet.
+ Die Gliederungstiefe wurde an manchen Stellen erhöht und Überschriftenbezeichnu
+ngen wurden präziser gewählt.
+ Die restliche Workflowmuster wurden an mehreren Tagen überarbeitet und
+ Texte dazu ausformuliert.
+ Die Einteilung der Sprachen wurde erarbeitet und aufgeschrieben.
+\end_layout
+
+\begin_layout Section
+Methodik und Organisation
+\end_layout
+
+\begin_layout Standard
+Ich habe mich an Reihenfolgen gehalten.
+ Dabei habe ich Prioritäten entscheiden lassen.
+ Die wichtigsten Prioritäten sind dabei Neugier, Motivation und Notwendigkeit
+ dass etwas vorher gemacht wird.
+ Weitere Prioritäten sind Effizienz ( Dazu zählt das Ziel Dinge nicht doppelt
+ machen zu müssen.) , Qualität ( Prozess verlangsamen und in mehr Abschnitte
+ unterteilen um mehr Qualität zu erreichen.).
+ Um mich zu motivieren habe ich die Bachelorarbeit vielen Bekannten gezeigt.
+ Die meisten hatten wenig Zeit und haben nur einen kurzen Blick darauf geworfen
+ und sie hat ihnen gefallen.
+ Auf diese Reaktion habe ich abgezielt.
+ Kurze Releasezeiten von Software haben einen ähnlichen Effekt für den Open-Sour
+ce-Entwickler.
+ Als Organisationssoftware habe ich verschiedene Programme genutzt, in denen
+ Notizen hierarchisch angeordnet werden.
+ Backups liefen vollautomatisch mithilfe einer Synchronisationssoftware.
+\end_layout
+
+\begin_layout Section
+Erfahrungsgewinn und Erfüllung der Erwartungen
+\end_layout
+
+\begin_layout Standard
+Besonders angenehm überrascht hat mich die Erfahrung, dass meine Kollegen
+ sehr freundlich waren und jede meiner Fragen beantwortet haben.
+ So ein Arbeitsklima hatte ich bisher in keiner Firma.
+ Ich habe nicht damit gerechnet, dass meine Kollegen Zeit für mich opfern.
+ Inwiefern meine Arbeit nützlich für die Firma Ceiton Technologies ist,
+ kann ich zum gegebenem Zeitpunkt nur schwer beurteilen.
+ Schließlich dient meine Arbeit lediglich einer großen Entscheidung und
+ zwar der Frage in welche Richtung sich deren Workflowsystem entwickeln
+ wird.
+ Froh bin ich sehr darüber, dass ich viel über Latex basierte Textverarbeitung
+ gelernt habe.
+ Ich habe vor meine Bewerbungen demnächst in Latex bzw.
+ Lyx zu verfassen.
+ In höflichem Umgang habe ich mich geübt, der mir im Beruf wichtiger erscheint
+ als im Studium.
+ Die optische Erscheinung meiner Bachelorarbeit stellt mich zufrieden, die
+ Beurteilung des Inhalts will ich lieber abwarten, weil man sich als Student
+ leicht verschätzen kann.
+ Regelungen wie der verbotene Dateiaustausch zwischen Privatcomputern und
+ Firmencomputern und andere gewöhnliche Arbeitsgegebenheiten bereichern
+ meinen Erfahrungsschatz über den Alltag im Arbeitsleben.
+ Weiterhin habe ich aus den Auseinandersetzungen der anderen Mitarbeitern
+ mit dem Vorgesetzten gelernt, dass man Dinge ausdiskutieren bzw.
+ mit etwas versuchen zu überzeugen darf, anstelle nur strikt dem Chef zu
+ gehorchen.
+ 
+\end_layout
+
+\end_body
+\end_document

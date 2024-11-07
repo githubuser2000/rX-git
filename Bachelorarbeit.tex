@@ -1,0 +1,2258 @@
+%% LyX 2.0.0rc3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english,ngerman]{book}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm,headheight=2cm,headsep=2cm,footskip=2cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{fixltx2e}
+\usepackage{makeidx}
+\makeindex
+\usepackage{graphicx}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+\usepackage{lettrine}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{color}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=black]{hyperref}
+\usepackage{wrapfig}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\definecolor{lightgray}{rgb}{.9,.9,.9} 
+\definecolor{darkgray}{rgb}{.4,.4,.4} 
+\definecolor{forestGreen}{RGB}{34,139,34} 
+\definecolor{orangeRed}{RGB}{255,69,0}
+\lstdefinestyle{workflowStyle}{ 
+language=XML, 
+alsolanguage=bpel, 
+alsolanguage=xaml, 
+%Formatting 
+basicstyle=\scriptsize, 
+sensitive=true, 
+showstringspaces=false,
+numbers=left, 
+numberstyle=\tiny, 
+tabsize=4,
+numbersep=3pt, 
+extendedchars=true, 
+xleftmargin=2em, 
+lineskip=1pt, 
+breaklines, 
+captionpos=t,
+%Coloring 
+backgroundcolor=\color{lightgray},
+morekeywords={BooleanExpression},
+alsoletter={:,,/,?},
+morestring=[b]{"},
+morecomment=[s]{}, 
+keywordstyle=\color{forestGreen},
+identifierstyle=\color{blue}\ttfamily,
+stringstyle=\color{orangeRed}\ttfamily, 
+commentstyle=\color{forestGreen}\ttfamily 
+} 
+\lstdefinelanguage{bpel}{ morekeywords={name,linkName,isolated,parallel,partnerLink,operation,portType,inputVariable,createInstance,variable,element,location,importType, partnerLinkType,myRole,messageType,properties,level,outputVariable,xmlns,version,encoding} 
+}
+\lstdefinelanguage{xaml}{ morekeywords={TypeArguments,Name,Default,DisplayName,OperationName,ServiceContractName,Key,AddressUri,CanCreateInstance, LogName, Message, MessageNumber, Expression,CorrelationHandle,Request} }
+
+\lstnewenvironment{workflow-code}[2]{ 
+	\lstset{caption=#1,label=#2,style=workflowStyle}
+}{}
+
+\titlepage
+\renewcommand{\thepage}{\Roman{page}}
+\setcounter{page}{1}
+
+\begin{center}
+\includegraphics[scale=0.07]{HTWK_blau_schwarz}
+\par\end{center}
+
+\noindent \begin{center}
+\vspace{0.2cm}
+
+\par\end{center}
+
+\noindent \begin{center}
+\textbf{\Large Fakultät Informatik, Mathematik und Naturwissenschaften}\\
+\vspace{1.5cm}
+
+\par\end{center}
+
+\noindent \begin{center}
+\textbf{\huge Bachelor-Thesis}\\
+\smallskip{}
+{\Large Vergleich standardisierter Prozess-Beschreibungs-Sprachen}
+\par\end{center}{\Large \par}
+
+\vspace{3.5cm}
+
+
+\noindent {\huge }%
+\begin{longtable}{ll}
+Vorgelegt von:  &  Alexander Kern\tabularnewline
+Abgabe am: & 17.08.2011\tabularnewline
+\end{longtable}{\huge \par}
+
+\vspace{1.5cm}
+
+
+\noindent \begin{center}
+zum \\
+Erlangen des akademischen Grades\\
+\smallskip{}
+
+\par\end{center}
+
+\noindent \begin{center}
+\textbf{\LARGE Bachelor of Science}\\
+\textbf{(B.Sc.)}
+\par\end{center}
+
+\medskip{}
+
+
+Betreuer: 
+\begin{itemize}
+\item Prof. Dr. Kudraß
+\item Dimplom-Informatiker Chris Rosenbusch
+\end{itemize}
+\newpage{}
+
+\begin{center} 
+\textsf{\textbf{\large Bachelorarbeit}}
+\end{center}
+
+\noindent Hiermit erkläre ich, dass ich die von mir am heutigen Tage
+dem Prüfungsauschuss der Fakultät IMN eingereichte Bachelorarbeit
+zum Thema
+
+\smallskip{}
+
+
+\noindent \begin{center}
+Vergleich standardisierter Prozess-Beschreibungs-Sprachen
+\par\end{center}
+
+\smallskip{}
+
+
+\noindent vollkommen selbstständig verfasst und keine anderen als
+die angegebenen Quellen und Hilfsmittel benutzt sowie Zitate kenntlich
+gemacht habe. 
+
+\medskip{}
+
+
+\noindent Leipzig, den 7.7.2011 
+
+\vspace{1.7cm}
+
+
+\noindent Unterschrift
+
+\selectlanguage{ngerman}
+
+\newpage{}
+
+\begin{center} 
+\textsf{\textbf{\large Danksagung}}
+\end{center}In erster Linie möchte ich mich bei meinen Betreuern bedanken, die
+mich mit Rat und Tat unterstützt haben. Ich möchte mich auch bei allen
+Mitarbeitern von Ceiton technologies bedanken, weil ich ein sehr gutes
+Arbeitsklima vorfand. \\
+\\
+Nicht zuletzt möchte ich mich bei meinen Eltern bedanken, durch die
+mir ein akademischen Abschluss ermöglicht wird. \\
+\\
+Bei allen Wählern, Meinungsmachern, Demonstranten, Parteien in Deutschland
+und bei den Steuerzahlern, bedanke ich mich für eine ausreichende
+finanzielle Absicherung u.a. durch Bafög, günstige Studentenwohnheime,
+studentische Vergünstigungen z.B. für den öffentlichen Verkehr. 
+
+\selectlanguage{english}%
+\newpage{}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+~
+\par\end{center}
+
+\begin{center}
+,,Unser Wissen ist ein kritisches Raten, ein Netz von Hypothesen,
+ein Gewebe von Vermutungen.{}`` Sir Karl Raimund Popper - Logik der
+Forschung, Vorwort, 3. Auflage\newpage{}
+\par\end{center}
+
+\selectlanguage{ngerman}%
+\tableofcontents{}
+
+
+\chapter{Einleitung}
+
+
+\section{Aufgabengebiet}
+
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}\lettrine{B}usiness Process Modelling wird benötigt, um geschäftliche
+Abläufe computer-gestützt arbeiten zu lassen. Dies passiert in der
+modernen Arbeitswelt, in der Geld zu erwirtschaften ist. BPM\nomenclature{BPM}{Business Process Management}
+wird eingesetzt, damit mehr Geld erwirtschaftet werden kann. Um computergestützte
+Arbeitsabläufe bzw. Geschäftsprozesse zu erstellen wird eine Prozess-Beschreibungs-Sprache
+benötigt. Aus ihrer Definition kann man erkennen, was technisch möglich
+ist, wenn Arbeitsabläufe zu modellieren sind. Es gibt viele Prozessbeschreibungssprachen
+und Sprachen die mit Einschränkungen als Prozessbeschreibungssprache
+eingesetzt werden könnten. Einige dieser Sprachen wurden standardisiert.
+Das Themengebiet über computergestützte Geschäftsprozesse ist einzuordnen
+in die Wirtschaftsinformatik, genauer Informationssysteme. \\
+\\
+Geschäftsprozesse gibt es sowohl unternehmensintern als auch im Business
+to Business. Inhalte im BPM sind Ressourcen, Aktivitäten, Verzweigungen,
+Kunden etc. Dabei gibt es verschiedene Anwendungsfälle für die eine
+Lösung konzipiert worden ist. Ein relativer moderner Ansatz ist die
+service orientierte Architektur, die sich oft besser vermarkten lässt,
+als monolithische Architekturen, weil Komponenten einzeln verkauft
+werden können, je nach Bedarf. Geschäftskunden bevorzugen oft selbst
+ihre Worklows zu modellieren, weshalb die Machbarkeit der Kreierung
+von Geschäftsprozessen durch Nicht-IT-Experten wünschenswert ist.
+Neu sind cloud-basierte Lösungen. Der Geschäftsprozess befindet sich
+in solchen Produkten auf einem entfernten Computer. Interessant wäre
+es, wenn auf diese Art der veränderte Workflow synchronisiert würde
+mit der Cloud, wenn über Entfernungen zusammengearbeitet wird.\\
+\\
+Die Perfekte Umsetzung von Geschäftsprozessen gibt es nicht. Es ist
+vielmehr eine Kunst Geschäftsprozesse zu erstellen.
+
+
+\section{Motivation und Problemstellung}
+
+\lettrine{D}ie Firma Ceiton Technologies sucht den optimalen Standard
+einer Prozess-Beschreibungs-Sprache als Grundlage für ihr Business
+Process Management System CTWS\nomenclature{CTWS}{Ceiton Technology Workflow System}.
+Dazu ist es notwendig Entscheidungskriterien zu finden, nach denen
+die Standards evaluiert werden. Anschließend werden die Standards
+genauer beschrieben und verglichen. Diese Standards und ihre Erweiterungs-Entwürfe
+sollten in der Zukunft eine entscheidende Rolle spielen und nicht
+durch konkurrierende Standards verdrängt werden, damit eine solide
+Grundlage für die Zukunft geschaffen werden kann. 
+
+
+\section{Aufbau der Arbeit }
+
+\lettrine{I}n der Einleitung wird das Themengebiet vorgestellt mit
+der Bedeutung für die Wirtschaft, es wird beschrieben warum diese
+Arbeit geschrieben wurde und es wird darauf eingegangen, was die Arbeit
+erst ermöglicht und zwar die Vergleichskriterien für Prozessbeschreibungssprachen.
+In Kapitel 2 werden Grundlagen vermittelt, auf denen die Arbeit aufbaut,
+und schließlich eine kurze Zusammenfassung der Geschichte des BPM,
+damit der Hintergrund nachvollzogen werden kann und ein Ausblick in
+die Zukunft ermöglicht wird. Im Kapitel 3 gibt es zunächst eine Betrachtung
+der Einteilung von Sprachen, darauf folgt eine Auflistung von Sprachen,
+die im Kontext dieser Arbeit stehen mit wenigen relevanten Informationen.
+Schließlich wird begründet, warum diese Sprachen nicht für eine Implementierung
+eines BPMS umgesetzt werden sollten. Einen Sonderstatus hat Wf-XML,
+auf das in Kapitel 4 eingegangen wird. Es passt nicht in die Einteilung
+der Sprachen und hat einen speziellen Einsatzzweck. Zuerst Wf-XML
+erklärt und dann wird gefolgert was es für einen Nutzen hat. \\
+In Kapitel 5 wird zunächst beschrieben warum die Entscheidung einer
+engeren Auswahl durch Vorselektierung getroffen wurde. Dann wird auf
+diese Auswahl näher eingegangen und deren Erweiterungen. Die Auswahl
+der Sprachen wird visuell in einen zeitlichen Kontext gestellt. Es
+wird betrachtet wie sich die Standards in der Wirtschaft niedergeschlagen
+haben durch das Auflisten von workflow-basierten Produkten. Die Verfügbarkeit
+von professionellen Editoren für Geschäftsprozesse wird beschrieben
+und am Ende des Kapitels wird auf die Zukunftsaussichten der Sprachen-Standards
+und dessen Erweiterungen eingegangen.\\
+Kapitel 6 hat den praktischen Nutzen mit einem möglichst einfachen
+Beispiel einige Grundlagen der Umsetzung eines Standards zu veranschaulichen,
+indem u.a. XML-Code erklärt wird. Anschließend wird auf eine Besonderheit
+eines Plugins von Ceiton und dessen Bezug zu den Standards eingegangen.\\
+Kapitel 7 dient dem teilweisen Benchmarking der Features der Sprachen.
+Dazu ist ein tiefes Verständnis erforderlich. \\
+Im letzten Kapitel wird die Arbeit zusammengefasst.
+
+
+\section{Vergleichskriterien}
+
+\lettrine{Z}unächst war wenig bekannt über die betreffenden Prozessbeschreibungssprachen
+und somit war auch nicht bekannt wonach sie zu beurteilen sind. Im
+Laufe der Recherchen und Auseinandersetzungen mit einigen Personen
+wurden Entscheidungskriterien gefunden und ergänzt.\\
+Betrachtet wird, ob mit einem Standard eine SOA\nomenclature{SOA}{Service Orientated Architecture}
+umgesetzt werden kann.\\
+Beispiele eignen sich um ein grundsätzliches Verständnis für einen
+Standard zu bekommen. \\
+Ein detailierter Vergleich des Innenlebens der Standards ist mit den
+Workflow-Mustern möglich.\\
+Spezielle Aspekte, wie die Unterstützung von Subprozessen und Fehlerbehandlung
+werden betrachtet.\\
+Automatisierbarkeit und Einbeziehbarkeit von Menschen sind zu untersuchen.\\
+Leicht herauszufinden ist, ob der Standard nur eine visuelle Definition
+enthält oder eine XML-Ausführungssemantik beinhaltet.\\
+Plattformunabhängigkeit ist ohne Frage ein Kriterium, doch dies erfüllen
+alle ausgewählten Standards, da sie auf XML setzen. Also wird drauf
+nicht näher eingegangen. Die Möglichkeiten mit XSLT zu arbeiten wird
+auch nicht betrachtet, da alle Standards dies ermöglichen.\\
+Nützlich sind auch die Informationen wie Verbreitet ein Standard ist,
+wie viele Mitglieder die Standardisierungs-Organisationen haben, von
+welchen Unternehmen die Standards getragen werden und in welchen Produkten
+die Standards aufzufinden sind und in wie vielen.\\
+Einsatzzweck und Anwendungsfall sowie die Art der Dienstekomposition
+die der Standard bedient sind Informformationen die Grundsätzliches
+aussagen.\\
+Die Zukunftsfähigkeit ist eines der wichtigsten Kriterien. Diese Betrachtung
+kann nur in verschiedenen Kontexten betrachtet werden. Dabei müssen
+Urteile von vielen Quellen einbezogen werden, da parteiische Aussagen
+in einem kommerziellem Umfeld am schnellsten gefunden werden.\\
+Die Verfügbarkeit von Editoren und Modellierern wird untersucht.\\
+Organisatorisch relevant ist die Realisierung der Modellierung auch
+durch Nicht-IT-Experten.\\
+Die Kompatiblität und Interoperabilität zwischen modellierten Umsetzungen
+und die Umwandlung von dem einen Standard in den anderen wird untersucht.
+Es wird betrachtet, ob Modellierungen zwischen Unternehmen ausgetauscht
+werden können.
+
+
+\chapter{Grundlegendes}
+
+
+\section{Begriffe, Definitionen, Grundlagen}
+
+\lettrine{F}olgende gegliederte Textabschnitte erklären fundamentale
+Grundlagen, auf welche diese Arbeit aufbaut. Ohne dieses Wissen ist
+ein grundlegendes Verständnis kaum möglich. Für den Vergleich und
+die Einordnung der Prozessbeschreibungssprachen sind die meisten folgenden
+Inhalte maßgebend. 
+\begin{itemize}
+\item Unterscheidung von Ablaufplanarten
+
+\begin{itemize}
+\item (Geschäfts-)Prozess:\\
+Mit einem Prozess ist in jeder dieser Thematik betreffenden Literatur
+ein Geschäftsprozess gemeint. Ein Prozess ist vergleichbar mit einem
+Algorithmus. Er beschreibt den Ablauf von Bearbeitungsschritten. Generelle
+Wiederholbarkeit ist möglich. Es gibt eine exakt definierte Zusammenstellung,
+wie der Prozess durchzuführen ist.\cite{8}
+\item Workflow:\\
+1993 wurde die erste Workflow-Vereinigung gegründet, die Workflow-Management-Coalition.
+Laut der WfMC wird ein Worklow definiert als ein formaler, ganz oder
+teilweise automatisierter Geschäftsprozess.\cite{5}
+\end{itemize}
+\item 2 Prozessarten
+
+\begin{itemize}
+\item automatische Prozesse:\\
+Prozesse, die ohne menschliche Interaktion ausschließlich von einer
+Maschine auszuführen sind. Dazu wird eine Sprache benötigt, die ausführbar
+ist, in der Regel von einer Prozess Engine.
+\item abstrakte Prozesse:\\
+Prozesse, die nicht durch eine Maschine ausführbar sind und die entweder
+dafür modelliert werden, damit ein Ablauf verstanden wird oder damit
+basierend auf einem Ablauf weiter gedacht wird z.B. zur Erstellung
+eines automatischen oder detaillierteren Ablauf. Sie werden nicht
+offiziell manuelle Prozesse genannt.
+\end{itemize}
+\item 2 Modellierungsarten
+
+\begin{itemize}
+\item fachliche Modellierung:\\
+Fachliche Modellierung ist eine Kreation von manuellen und automatischen
+Prozessen, die teilweise formal, also nach Vorschrift, ausgeführt
+wird, aber auch mit Texten beschrieben wird, damit Menschen im Glied
+der Prozesskette daraus ein Verständnis gewinnen können. Der Einsatz
+von Sprachen ist sinnvoll, die Text und Ausführungslogik kombinieren.
+\item technische Modellierung:\\
+Kreation von Prozessen, die ein Computersystem vollständig ausführen
+kann. Hier wird eine Programmierung modelliert mit einer entsprechenden
+Sprache aus dem Bereich Programmierung im Großen oder Kleinen. Sinnvoll
+ist die Verwendung einer Sprache aus der Programmierung im Großen,
+da so eine Sprache für diesen Zweck geschaffen worden ist.
+\end{itemize}
+\item Dienst/Service\\
+Ein Dienst ist eine Zusammenstellung von Funktionen einer Abstraktionsschicht,
+die diese einer nur direkt übergeordneten Schicht am so genannten
+Dienstzugangspunkt anbietet.
+\item Dienstkomposition\\
+Es wird beschrieben wie Dienste aus anderen Diensten zusammengesetzt
+worden sind. Dabei wird unterschieden in Choreographie und Orchestrierung.
+
+\begin{itemize}
+\item Choreographie:\\
+Dies ist eine Workflow-Beschreibung ohne die zentrale Steuerung durch
+eine Komponente. Die Umsetzung erfolgt mit einer Workflowsprache.
+Man kann darunter auch eine dezentrale Interaktion von Diensten verstehen,
+mittels einer nicht ausführbaren Sprache.\cite{20}
+\item Orchestrierung:\\
+Eine Prozessbeschreibung mit zentraler Steuerung durch eine Komponente
+ist eine Orchestrierung. Dies kann umgesetzt worden sein durch eine
+zentrale Interaktion von Diensten in einer direkt oder indirekt ausführbaren
+Sprache. Es findet zu größten Teilen ein Nachrichtenaustausch zwischen
+Diensten statt.\cite{20}
+\end{itemize}
+\item Kolloborationen (BPMN):\\
+Kolloborationen stellen Interaktionen zwischen 2 oder mehr Geschäfts-Entitäten
+anschaulich dar. Eine Kolloboration beinhaltet gewöhnlich 2 oder mehrere
+Pools, die die Teilnehmer in der Collaboration repräsentieren. Der
+Nachrichtenaustausch zwischen den Teilnehmern wird gezeigt durch einen
+Message Flow (Steuerelement) der 2 Pools (Steuerelement) verbindet
+(oder Objekte innerhalb der Pools)... Choreographien könnten gezeigt
+werden zwischen den Pools, wenn sie die Message Flows halbieren.\cite{29}\medskip{}
+\begin{figure}[H]
+\raggedleft{}\caption{beispielhaftes vereinfachtes abstraktes BPMN 2.0-Kolloborations-Diagramm}
+\includegraphics[scale=0.4]{\string"ba prozess\string".png}
+\end{figure}
+\medskip{}
+
+\item Konversationen\\
+Konversationsdiagramme sind eine besondere und informale Beschreibung
+von Kolloborations-Diagrammen. Es stellt eine vereinfachte Version
+dessen dar, wobei jedoch die gesamte Funktionalität erhalten bleibt.
+Eine Konversation ist ein logisches Gruppieren des Nachrichten-Austausches.
+Dies zielt zumeist auf Objekte des Interesses für Geschäfts-Angelegenheiten
+ab wie Einkauf, Lieferung etc.\cite{29}\\
+\begin{figure}[H]
+\begin{centering}
+\caption{Beispiel eines BPMN-2.0-Konversations-Diagramms}
+\includegraphics[scale=0.65]{konversation}
+\par\end{centering}
+
+\end{figure}
+
+\item Korrelation\\
+Korrelationen verbinden spezielle Nachrichten zu einer ausgehenden
+Konversation zwischen 2 speziellen Prozessinstanzen. Dies ist ein
+nützliches Konzept, wenn es keine Infrastruktur gibt, die Instanzenrouting
+unterstützt. \cite{29}
+\item Programmierung im Kleinen und Großen
+
+\begin{itemize}
+\item Programmieren im Kleinen:\\
+Es ist eine Programmierung von Software mit relativ wenigen Codezeilen
+durch Personen in relativ kurzer Zeit.\cite{30}
+\item Programmieren im Großen:\\
+Die gemeinsame Zusammenwirkung von bereits programmierten Modulen
+wird mit der Programmierung im Großen bewirkt. Große Programme bestehen
+dabei aus vielen Modulen. Es ist nicht festgelegt wie die Module vorliegen.
+Die Programmierung kann auch mit einer Modellierung umgesetzt werden.
+Eine gewöhnliche Hochsprache wird dabei für die Zusammenführung von
+Modulen in einem Projekt eingesetzt. Für die Zusammenarbeit von Diensten
+wird jedoch die Prozessbeschreibungssprache BPEL verwendet. Die Kontrollstrukturen
+unterscheiden sich dabei maßgeblich von denen einer gewöhnlichen Hochsprache.
+Die zusammenwirkenden Module , können also z.B. als Dienste also z.B.
+Webservices oder z.B. als Objektdateien oder z.B. als Quelltextabschnitte
+vorliegen.\cite{30}
+\end{itemize}
+\item Prozess-Beschreibungs-Sprache\\
+Sie beschreibt Geschäftsprozesse. Der Größte gemeinsame Nenner aller
+Prozessbeschreibungssprachen ist der Einsatz von Workflow-Mustern.
+Der Haupt-Einsatz-Zweck ist die modellierte Programmierung im Großen
+von Arbeitsabläufen zur Wertschöpfung oder für Dienstleistungen. Es
+gibt rein bildliche, rein textliche Sprachen und Sprachen die beides
+kombinieren. Standardisierte textliche Sprachen basieren zumeist auf
+XML. Ursprünglich nicht als Prozessbeschreibungssprache konzipierte
+Sprachen wie Petri-Netze oder UML Aktivitätsdiagramme lassen sich
+auch als Prozessbeschreibungssprache verwenden. 
+\item modellierte Programmierung über eine Prozessbeschreibungssprache\\
+Ein Workflow erscheint als Bild und zugehörige Daten werden über Formulare
+eingegeben. Daraus wird eine XML-Datei generiert, die die Programmierung
+im Großen darstellt.
+\item Prozess-Engine\\
+In erster Linie ist eine Prozessengine eine Engine (en. Motor, Antrieb)
+und das bedeutet, dass sie eine Abstraktionsschicht in einer Softwarearchitektur
+darstellt. Sie ist eine Laufzeitumgebung für Workflows und hat einen
+dynamischen Charakter.
+\item Workflow-Muster\\
+Die Variante der Programmierung im Großen zur Umsetzung von Workflows
+mit einer Prozessbeschreibungssprache wie BPEL erfolgt mittels für
+diesen Einsatzzweck konzipierten Funktionalen Einheiten. Diese funktionalen
+Einheiten, die sich ergeben haben aus vorhandenen Workflow-Sprachen,
+aus der Erfahrung mit der Programmierung im Kleinen, stellen verschiedene
+Perspektiven der Programmierung im Großen mit einer Prozessbeschreibungssprache
+dar. Ein Workflow-Muster besteht aus der funktionalen Einheit, ihrer
+technisch-logischen Funktion, ihrem semantischen Einsatzzweck (z.B.
+Ausnahme-Behandlung) und ihrer wörtlichen Beschreibung. Ein Worklow-Muster
+kann im Vergleich zu einer Hochsprache eine Umsetzung eines Konzeptes
+der allgemeinen Softwareentwicklung sein, z.B. wenn praktische Parallelisierung
+umgesetzt wird.
+\end{itemize}
+
+\section{geschichtlicher Abriss}
+
+\lettrine{V}or dem Architekturansatz von BPMS\nomenclature{BPMS}{Business Process Management System}-Lösungen
+wurden Individual-Lösungen geschaffen, die im Regelfall nicht modular
+aufgebaut waren. Realisiert wurde dies mit Hilfe von zusammenarbeitenden
+Skripten oder in Form eines großen Programms, das mit einer üblichen
+Hochsprache entwickelt wurde. Anfang der 90' Jahre gab es die ersten
+BPMS. 1993 konnten diese das erste Mal die Aufgaben der Arbeiter navigieren,
+dann auch zwischen verschiedenen Mitarbeitern. Anfang der 00' Jahre
+wurden die ersten SOA basierten Systeme umgesetzt, da der mögliche
+Einsatz einer SOA naheliegend ist. Darauf folgte der Einsatz zusammengesetzter
+Services, die mehrere Services abstrahieren. Seit 1993 häufen sich
+die BPM-Standards überlinear, trotz manchmal vorhandenen Zusammenschlüssen
+von Standards. Die Anzahl der Seiten eines Standards ist dabei von
+Version zu Version stark gestiegen.
+\begin{itemize}
+\item Standardisierungs-Vereinigungen: IETF\nomenclature{IETF}{Internet Engineering Task Force},
+OASIS\nomenclature{OASIS}{Organization for the Advancement of Structured Information Standards},
+OMG\nomenclature{OMG}{Object Management Group}, W3C\nomenclature{W3C}{World Wide Web Consortium},
+WfMC\nomenclature{WfMC}{Workflow Management Coalition}, UN/CEFACT\nomenclature{UN/CEFACT}{United Nations Centre for Trade Facilitation and Electronic Business},
+BPMI\nomenclature{BPMI}{Business Process Management Initiative}
+\end{itemize}
+
+\chapter{Sprachen im\protect \\
+Geschäftsprozess-Kontext}
+
+
+\section{Einteilung der Sprachen und deren Bedeutung}
+
+\lettrine{E}s gibt rein visuelle Sprachen, die definieren wie (Geschäfts-)prozesse
+(z.B. BPMN 1.2\nomenclature{BPMN 2.0}{Business Process Management Notation 2.0}\nomenclature{BPMN 1.x}{Business Process Management and Notation 1.x})
+oder Dienste (sEPKs) oder andere Formen der Organisation (Petrinetze
+für Automaten) dargestellt werden. Diese Sprachen lassen sich entweder
+für Workflowbasierte Systeme einsetzen oder sind verwandt untereinander
+oder eigenen sich zur reinen Visualierung von Geschäftsprozessen bzw.
+zur fachlichen Modellierung. Z.B. wird UML\nomenclature{UML}{Unified Modeling Language}
+für die Planung der Softwareentwicklung eingesetzt, jedoch lässt sich
+UML auch als Visualisierung für workflow-basierte Systeme einsetzen.
+So lässt sich z.B. BPMN 1.x in UML-Aktivitätsdiagramme konvertieren.
+\\
+\\
+Sprachen mit Ausführungssemantik (Prozess-Beschreibungs-Sprachen)
+legen fest, wie ein BPMS oder mehrere BPMS einen Workflow auszuführen
+haben. Darin wird unterschieden zwischen 
+\begin{itemize}
+\item Orchestrierungs-Sprachen und Choreographie-Sprachen, 
+\item zwischen der Machbarkeit von fachlicher und technischer Modellierung 
+\item und zwischen human-zentrischer (Der Mensch steht im Focus.) und web-service-zentrischer
+Orientierung der Sprache.
+\end{itemize}
+Viele Sprachen lassen sich kombinieren oder sind dafür gedacht kombiniert
+zu werden mit einer speziellen Sprache (XPDL 2.0 und BPMN 1.x). Die
+Kombinierbarkeit und Transformation ist eingeschränkt und/oder schwieriger,
+wenn die eine Sprache graph-basiert ist und die andere baum-basiert.
+Eine Transformation von Sprachen lässt sich leichter programmieren,
+wenn beide XML-basiert sind und im besten Fall auf das umfassende
+XML-Schema XSD setzen. Im Standard BPMN 2.0, der in dieser Version
+verwandt mit BPEL geworden ist, wird sogar eine Umwandlung zu BPEL
+beschrieben.
+
+
+\section{bekannte Sprachen}
+
+\lettrine{F}olgende Sprachen eignen sich vollkommen oder sehr eingeschränkt
+für den Einsatz im Business Process Modelling. Es sind alle Sprachen
+gelistet, die durch eine umfangreiche Online-Recherche und Buch-Recherche
+gefunden worden sind und über die ausreichende Informationen zusammengetragen
+werden können.
+\begin{itemize}
+\item ADEPT
+
+\begin{itemize}
+\item Was ist es: Prozessbeschreibungssprache 
+\item Veröffentlicher: entstanden aus einem Forschungsprojekt des Instituts
+für Datenbanken und Informationssysteme an der Universität Ulm
+\item Wann: Projekt wurde Mitte der 90' Jahre gestartet
+\item Abgrenzung:
+
+\begin{itemize}
+\item basiert auf Marketingnetzen, genauer WSM-Netze
+\item Das Prozessmodell ist ein gerichteter Graph mit symmetrischer Blockstruktur
+\end{itemize}
+\item \cite{19}
+\end{itemize}
+\item Petri-Netz
+
+\begin{itemize}
+\item Was es ist: Sprache zur Modellierung informationsverarbeitender Automaten
+\item Wann:
+\item Veröffentlicher:
+\item Abgrenzung:
+
+\begin{itemize}
+\item einfache Grundlogik (Bedingung, Ereignis, Kante, Token)
+\item mathematisch klar strukturiert und eindeutig
+\item auf logische Konsistenz überprüfbar
+\item schnell in Workflow-Systemen umsetzbar
+\end{itemize}
+\item weiterer Einsatzzweck:
+
+\begin{itemize}
+\item modellbasierter/ubiquitärer/universeller Softwareentwurf
+\item Programmierung im Großen
+\end{itemize}
+\item Bewertungsgrundlagen:
+
+\begin{itemize}
+\item Anzahl der Veröffentlichungen liegen im fünfstelligen Bereich
+\end{itemize}
+\item \cite{8,6}
+\end{itemize}
+\item UML Aktivitätsdiagramme:
+
+\begin{itemize}
+\item was es ist: Vorschrift für Diagramme für den Softwareentwurf zur Betrachtung
+des Verhaltens der dynamischen Aspekte.
+\item Veröffentlicher: OMG
+\item Wann: Mai 2010 gab es die bisher letzte Aktualisierung von UML auf
+UML-Version 2.3, Entstehungsgeschichte reicht bis in die 1990' Jahre
+zurück.
+\item Abgrenzung:
+
+\begin{itemize}
+\item orientieren sich an der Programmierung
+\end{itemize}
+\item Bewertungsgrundlagen:
+
+\begin{itemize}
+\item Softwareentwickler brauchen kaum Einarbeitungszeit, da sie in der
+Regel UML beherrschen
+\end{itemize}
+\item \cite{20,8}
+\end{itemize}
+\item ebXML
+
+\begin{itemize}
+\item Was es ist: eXtensible Markup Language, eine Middleware die Mechanismen
+zur Verfügung stellt, die festlegt, wie Business-Nachrichten ausgetauscht
+werden, Kooperationen beschrieben und betrieben werden in einem einheitlichen
+Verständnis zwischen Kooperationspartnern
+\item Veröffentlicher: aus Zusammenarbeit der Organisationen OASIS und UN/CEFACT
+\item Wann: 1999 entstanden
+\item \cite{22}
+\end{itemize}
+\item BPML
+
+\begin{itemize}
+\item Was ist es: Metasprache zur Beschreibung von Geschäftsprozessmodellen
+\item Veröffentlicher: BPMI Business Process Management Initiative
+\item Wann: November 2002 Version 1.0
+\item Abgrenzung:
+
+\begin{itemize}
+\item XML\nomenclature{XML}{Extensible Markup Language} basiert
+\item 17 Aktivitätstypen
+\item Unterprozesse definierbar
+\item Transaktionen definierbar
+\end{itemize}
+\item \cite{1}
+\end{itemize}
+\item jPDL
+
+\begin{itemize}
+\item Was es ist: kein Standard, JBPM ist eine proprietäre Plattform und
+jPDL dazu eine offene Prozess-Beschreibungs-Sprache.
+\item Veröffentlicher: Firma JBoss und Red Hat
+\item Wann: 7.2.2011 letztes Release
+\item in welcher Form vorliegend: Dokument der jPDL-Prozessbeschreibungssprache
+liegt in der LGPL-Lizenz vor. Dies ist eine Open-Source-Lizenz.
+\item \cite{8}
+\item Abgrenzung:
+
+\begin{itemize}
+\item XML basiert
+\item starke Konzentration auf die Prozessautomatisierung
+\item geringere Konzentration auf die Modellierung
+\end{itemize}
+\end{itemize}
+\item EPK
+
+\begin{itemize}
+\item was es ist: ereignis-gesteuerte Prozesskette (en.: epc, event based
+process chains)
+
+\begin{itemize}
+\item Sie zeigt visuell den zeitlich-logis\nomenclature{EPK}{ereignisgesteuerte Prozesskette}chen
+Ablauf von Funktionen und die Verknüpfung der Elemente der Daten-
+und Funktionssicht
+\item basiert auf Petrinetzen welche sie erweitert
+\end{itemize}
+\item Veröffentlicher: entwickelt vom Institut für Wirtschaftsinformatik
+in Saarbrücken
+\item Wann: 90' Jahre
+\item Einsatzgebiete:
+
+\begin{itemize}
+\item Analyse , Bewertung und Umsetzung von Softwareentwicklungen
+\item als Prozessbeschreibungssprache oder visuelle Ergänzung einer textlichen
+Prozessbeschreibungssprache
+\item eingeschränkt für technische Workflows geeignet
+\item allgemeine Organisationsbeschreibung
+\end{itemize}
+\item Bewertungsgrundlagen:
+
+\begin{itemize}
+\item viele Visualisierungs-Software-Lösungen unterstützen EPKs.
+\item ungeeignet für komplexe Tätigkeiten oder kreative Überlegungen
+\end{itemize}
+\item \cite{4,8}
+\end{itemize}
+\item YAWL
+
+\begin{itemize}
+\item von niederländischce Jol, Prozessbeschreibungssprache wie BPEL und
+XPDL
+\item Veröffentlicher: Eindhoven University of Technology in den Niederlanden
+und Queensland University of Technology in Australien
+\item Wann: seit 2002
+\item in welcher Form vorliegend: Open-Source-Dokument als Beschreibung
+der Prozessbeschreibungssprache und als Open-Source BPMS
+\item Struktur: basiert auf Petrinetzen und Workflow-Mustern
+\item BPMN Modelle können in die YAWL-Umgebung zur Ausführung abgebildet
+werden.
+\item SOA-basiert
+\item \cite{19,31}
+\end{itemize}
+\item WS-CDL\nomenclature{WS-CDL}{Web Services Choreography Description Language}
+
+\begin{itemize}
+\item Web Services Choreography Description Language, XML basierte Prozessbeschreibungssprache\\
+Sie ist nicht ausführbar, sondern sie stellt eine globale Beschreibung
+der Interaktion zwischen peer-to-peer Partnern mit heterogenen Ausführungsumgebungen
+dar.
+
+\begin{itemize}
+\item Das Hauptziel der Spezifikation ist die globale plattform- und implementations-unabhängige
+Beschreibung des beobachtbaren Verhaltens von Interaktionen zwischen
+beteiligten Systemen.
+\item Es werden hauptsächlich nur Prozessmetadaten definiert.
+\item Teile der Choreographie müssen mit einer ausführbaren Sprache wie
+BPEL oder Java umgesetzt werden.
+\end{itemize}
+\item Veröffentlicher: Web Services Choreography Working Group des W3C
+\item Wann: seit November 2005
+\item in welcher Form vorliegend: Recommendation Candidate
+\item \cite{21,20}
+\end{itemize}
+\item sEPK\nomenclature{sEPK}{service-orientierte ereignis-gesteuerte Prozessketten}
+
+\begin{itemize}
+\item Was es ist: Erweiterungsvorschlag für EPKs als service-orientierte
+ereignis-gesteuerte Prozessketten
+
+\begin{verse}
+sEPKs Elemente bestehen aus den Elementen der EPKs und einer kleinen
+Teilmenge der Elemente der BPMN
+\end{verse}
+\item Besonderheiten:
+
+\begin{itemize}
+\item Einsatzzweck ist der Einsatz für Webservices und SOAs
+\item ohne Verluste in BPMN umwandelbar
+\end{itemize}
+\item \cite{48}
+\end{itemize}
+\end{itemize}
+
+\section{Eignung der Sprachen als einzusetzende Prozessbeschreibungssprache}
+
+\lettrine{D}ie gelisteten Sprachen unterstützen heutige Anforderungen
+für Prozessbeschreibungssprachen für BPMS entweder nicht genügend
+(EPK, sEPK, Petrinetze, WS-CDL, BPML, ebXML, ADEPT), sind veraltet
+(Petrinetze, WS-CDL, ADEPT,Wf-XML, BPML), eignen sich nur eingeschränkt
+(UML, EPK,sEPK) , wurden nicht standardisiert oder haben einen \textbf{verhältnismäßig}
+geringen Verbreitungsgrad (YAWL, jPDL) im Vergleich zu XPDL und BPMN,
+oder sind eine Insel-Lösung (jPDL). 
+
+
+\chapter{Betrachtung von Wf-XML}
+
+
+\section{Beschreibung von Wf-XML}
+
+\lettrine{A}SAP\nomenclature{ASAP}{Asynchronous Service Access Protocol}
+ist ein vorgeschlagener Weg, um die grundlegende Fähgigkeit zur Steuerung
+und Überwachung eines asynchronen Web-Service durch den Einsatz des
+Simple Object Access Protokoll SOAP\nomenclature{SOAP}{Simple Object Access Protokoll},
+und durch die Übertragung von strukturierten Informationen in XML
+anzubieten. Das Steuern eines asynchronen Dienstes umfasst die Erstellung
+des Dienstes, die Einrichtung, das Starten und das Beenden, wobei
+über Ausnahmefälle informiert wird und über Vollendigung und über
+die Informationen des Ergebnisses des Dienstes. Die Überwachung des
+Web-Dienstes besteht aus der Überprüfung über den aktuellen Status
+des Dienstes und aus dem Erhalt eines Protokolls der Vergangenheit
+der Ausführung des Dienstes. Das externe Programm, das ein Prozess
+aufruft, benötigt lediglich ASAP für das grundlegende starten und
+überwachen (monitoren). Wf-XML\nomenclature{Wf-XML}{Workflow Extensible Markup Language}
+baut dann darauf auf und erweitert diese Schnittstelle für den speziellen
+Fall, dass dieser Dienst eine Prozessengine ist. Diese Erweiterung
+erlaubt es, die Liste der Aktivitäten abzurufen, auf die der Prozess
+wartet. Diese Aktivitäten können zusätzliche Informationen darüber
+anbieten , wer diesen Aktivitäten zugewiesen ist und möglicherweise
+über den entfernten Unterprozess, der aufgerufen wurde damit die Aktivitäten
+genügen. Somit bringt Wf-XML nicht nur den einfachen Austausch zum
+Starten und monitoren des Prozesses, sondern auch Selbstbeobachtung
+von Ausführungsketten von zusammenhängenden Prozessen, die alle aufgerufen
+wurden, um ihr ursprüngliches Ziel zu erfüllen.\cite{35}\\
+\\
+Zusammengefasst lässt sich sagen, dass ASAP eine Möglichkeit anbietet
+Instanzen zu starten von asynchronen Web-Diensten, diese zu überwachen,
+zu steuern und darüber informiert zu werden wenn diese vollständig
+abgelaufen sind. Diese Dienst-Instanzen kann so ziemlich alles für
+jeden Zweck ausführen. Der wichtigste Aspekt ist, dass die Dienst-Instanz
+etwas ist, das man wie aus der Ferne starten kann und es lange dauern
+kann, bis alles bis zum Ende durchgelaufen ist. Kurzlebige Dienste
+können synchron mit SOAP aufgerufen werden und man würde einfach für
+die Fertigstellung warten, aber weil diese Prozessinstanzen irgendwo
+verweilen können, in Zeiträumen von wenigen Minuten bishin zu wenigen
+Monaten, müssen sie asynchron aufgerufen werden. Wf-XML erweitert
+dies in dem besonderen Fall auf die Art, dass der asynchrone Dienst
+durch eine Prozessengine aufgerufen wird. \cite{35}\\
+\\
+Wf-XML unerstützt Protokolle wie: HTTP, TCP/IP-Netzwerk-Verbindungen,
+E-Mail und Message Oriented Middleware (MOM)
+
+
+\section{Folgerungen für den Einsatz\protect \\
+von Wf-XML}
+
+\lettrine{D}ie Verwendung von Wf-XML ist verbunden mit anderen Zielen
+bzw. Schwerpunkten als der Einsatz von Prozessbeschreibungssprachen,
+wie BPEL, XPDL oder BPMN 2.0 und zwar der Erweiterung von wenigen
+Worflow-Features zu ASAP. Es gibt Gemeinsamkeiten, zum Beispiel Aktivitäten
+und Instanzen, jedoch ist Wf-XML grundverschieden. Wf-XML ist auch
+ein XML-Dialekt, aber eine umfangreich machbare ,,Programmierung
+im Großen{}`` ist mit Wf-XML nicht umsetzbar, so wie dies mit BPEL,
+XPDL oder BPMN realisierbar ist. Wf-XML wurde 2004 standardisiert
+und wurde bis heute nicht weiter versioniert. Es gibt keinen Hinweis
+dafür, dass Wf-XML weiter entwickelt wird. Dagegen sind für sowie
+XPDL als auch BPMN weitere Versionen geplant und wegen den Erfolgaussichten
+von BPEL\nomenclature{(WS-)BPEL}{(Web Services) Business Process Execution Language}
+mit einiger Wahrscheinlichkeit auch für BPEL. Wf-XML wird verwendet
+für das interoperable Verbinden von mehreren Worfklow-Systemen zur
+Laufzeit mit Loser Kopplung ohne die Verwendung eines Adapters. Dies
+ist wichtig wenn sich verschiedene Organisationen über ihre Workflow
+basierten Systemen austauschen wollen (Business to Business). Wf-XML
+stellt hierbei die Schnittstelle für die Interoperabilität dar. So
+lässt sich eine richtige Prozess-Beschreibungs-Sprache mit Wf-XML
+kombinieren, z.B. wenn 2 Unternehmen sich auf Wf-XML geeinigt haben
+und zumindest einen Teil von Wf-XML implementiert haben, entweder
+den Anfrageteil (Client) oder den Web-Dienst oder beides.
+
+
+\chapter{Betrachtung der \protect \\
+engeren Auswahl}
+
+
+\section{Beschreibung der Eignung von BPEL ,XPDL ,BPMN}
+
+\lettrine{I}n folgenden Kapiteln wird auf potentiell geeignete Sprachen
+eingegangen, die als Grund für die Portierung oder Programmierung
+eines BPMS sinnvoll sind. Kriterien dabei sind Plattformunabhängigkeit,
+Interoperabilität, Transformierbarkeit ineinander, Vorlage als Standard,
+Modernität, Zukunftssicherheit, gewichteter Verbreitungsgrad (d.h.
+große Unternehmen) und das Vorhanden-sein einer Ausführungs-Semantik.
+
+
+\section{Sprachen der engeren Auswahl}
+
+\lettrine{D}ie Nennung eines Standards bezieht sich im Folgenden
+immer auf dessen neueste Version, zum Zeitpunkt dieses Dokumentes.
+Es wird pragmatisch auf Fließtext verzichtet wegen der Übersichtlichkeit
+und besseren Vergleichbarkeit und ersichtlicheren Gegenüberstellung.
+Ungegliedeter Text erschwert die Übersicht und damit das Verständnis.
+
+
+\subsection{BPMN 2.0}
+\begin{itemize}
+\item Was ist es: Business Process Modeling \textbf{and} Notation, eine
+Prozessbeschreibungssprache mit visueller Definition \textbf{und}
+Ausführungssemantik
+\item Veröffentlicher: Business Process Management Initiative (BPMI) und
+Object Management Group (OMG)
+\item am Standard beteiligte Firmen: Axway, BizAgi, Bruce Silver Associates,IDS
+Scheer, IBM Corp., MEGA International, Model Driven Solutions, Oracle,
+SAP AG, Software AG, TIBCO Software, Unisys\cite{29}
+\item In $\geq$11 Prozessmodellierern wird BPMN Version$\geq$ 1.1 als
+Notation eingesetzt.$\geq$2 Hersteller entschieden sich zusätzlich
+für (e)EPKs. {[}BPM-Tools\_im\_deutschsprachigen\_Markt.gif{]}. $\geq$16
+Hersteller geben nicht an, ob ihre Modellierungslösung BPMN unterstützt.
+\item Zeitpunkt der Finalversion: 4.1.2011\cite{29}
+\item Anzahl der Seiten: 538
+\item Dienstekomposition: sowohl Orchestration als auch Choreographie\\
+Außerdem sind Collaboration-Diagramme und Conversations-Diagramme
+in diesem Kontext definiert.\cite{29}
+\item Struktur: Graphen-orientiert, das bedeutet, dass Pfade nicht am Ende
+zusammengeführt werden müssen und dass es deshalb mehrere End-Status
+geben kann.
+\item unterstützte Prozesse: abstrakte und ausführbare
+\item Die Visualisierung ist verwandt mit EPKs und Ablaufdiagrammen.
+\item Neu seit Version 2.0 bzw. seit 2011:
+
+\begin{itemize}
+\item Ausführungssemantik für Elemente (XML)
+\item Erweiterungsmechanismus für Prozess-Modell-Erweiterungen und graphische
+Erweiterungen
+\item Veredelung von Ereigniskomposition und Korrelation
+\item Erweiterung der Definition menschlicher Interaktionen
+\item Definition eines Choreographie-Modells
+\item \cite{29}
+\end{itemize}
+\item 
+\begin{figure}[H]
+\caption{Kern-Struktur-Schichtenmodell}
+
+
+\centering{}\includegraphics{\string"BPM Core Structure\string".png}\cite{29}
+\end{figure}
+The technical structuring of BPMN is based on the concept of extensibility
+layers on top of a basic series of simple elements identified as Core
+Elements of the specification.\\
+\\
+It shows the basic principles of layering that can be composed in
+well defined ways. The approach uses formalization constructs for
+extensibility that are applied consistently to the definition.\cite{29}
+\item Besonderheiten und Evaluierungsgrundlagen:
+
+\begin{itemize}
+\item Zielsetzung von BPMN 2.0 ist es Vorteile von XPDL und BPMN zu kombinieren
+\cite{41}.
+\item Der Standard unterstützt eine Abbildung von BPMN auf die Ausführungssprache
+WS-BPEL, wodurch man dadurch weitere Abbildungen ableiten kann.
+\item SOA-Bezug: Es offen, ob WSDL\nomenclature{WSDL}{Web Services Description Language}
+eingesetzt wird oder andere Schnittstellendefinitionen. Das bedeutet,
+dass es nicht festgelegt ist, wie man eine SOA auf Basis von BPMN
+umsetzt oder ob, z.B. ob in Form von Webservices mit WSDL-Anbindung.
+Jedoch gibt es eine erzwungene WSDL-Einbindung in der Service Schnittstelle
+für die Ausführung von BPMN 2.0. Außerdem wird WSDL gebraucht für
+das Abbilden von BPMN 2.0 auf BPEL 2.0.
+\item Es gibt weniger Festlegungen über die Ausführbarkeit für eine Automatisierung
+als dies bei BPEL der Fall ist. Jedoch lässt sich BPEL und BPMN kombinieren,
+u.a. wenn auf die Ausführungssemantik von BPMN verzichtet wird.
+\item Subprozesse (komplexe Aktivitäten) werden ohne nötige Erweiterung
+unterstützt.\cite{29}
+\item laut Statistik gibt es 7000 Mitglieder im BPMN-Netzwerk\cite{34}
+\item von September 2009 bis August 2010 stieg die Anzahl der Mitglieder
+mit BPMN-Praxiserfahrung auf 45\%\cite{34}
+\item große Firmen wie IBM,SAP,Oracle setzen auf BPMN\cite{34}
+\item Es gibt einen großen Ausbildungsaufwand für BPMN\cite{34}
+\item BPMN ist im Vergleich zu BPEL bis zu einem Grad auch für Nicht-IT-Experten
+geeignet.\cite{34}
+\item Die Ausführungssemantik in XML-Schema ist verhältnismäßig dünn vertreten
+im Standard und ist weniger komplex dargestellt und gereift, als die
+von WS-BPEL. Jedoch sind die Beschreibungen der standardisierten Umstände
+einer Funktionalität sehr umfangreich und genau spezifiziert.
+\item Zitat: Keith Swenson, Fujitsu \textquotedblleft{}BPMN 2.0: no longer
+for Business Professionals\textquotedblright{} \textquotedblleft{}For
+human style BPM which uses diagram to depict the actions of organizational
+members, instead of servers, {[}we{]} may find that\ldots{} BPMN 2.0
+only adds\ldots{} complexity without sufficient benefit to the users.\textquotedblright{}Keith
+Swenson, Fujitsu \textquotedblleft{}BPMN 2.0: no longer for Business
+Professionals\textquotedblright{} \textquotedblleft{}For human style
+BPM which uses diagram to depict the actions of organizational members,
+instead of servers, {[}we{]} may find that\ldots{} BPMN 2.0 only adds\ldots{}
+complexity without sufficient benefit to the users.\textquotedblright{}\cite{36}
+\item Schwächen:
+
+\begin{itemize}
+\item Unterstützung von Routineaufgaben
+\item Konvertierung von BPMN-Modellen in ausführbare Umgebungen
+\item Unterstützung für Wissensarbeit
+\item Unordnung und Doppeldeutigkeit beim Austausch von BPMN-Modellen
+\item \cite{45}
+\end{itemize}
+\item Erweiterbarkeit
+
+\begin{itemize}
+\item New markers or indicators MAY be added to the specified graphical
+elements. These markers or indicators could be used to highlight a
+specific attribute of a BPMN element or to represent a new subtype
+of the corresponding concept.
+\item A new shape representing a kind of Artifact MAY be added to a Diagram,
+but the new Artifact shape SHALL NOT conflict with the shape specified
+for any other BPMN element or marker.
+\item Graphical elements MAY be colored, and the coloring MAY have specified
+semantics that extend the information conveyed by the element as specified
+in this standard.
+\item The line style of a graphical element MAY be changed, but that change
+SHALL NOT conflict with any other line style REQUIRED by this specification. 
+\item An extension SHALL NOT change the specified shape of a defined graphical
+element or marker (e.g., changing a square into a triangle, or changing
+rounded corners into squared corners, etc.).The following extensions
+to a BPMN Diagram are permitted:
+\item \cite{29}
+\end{itemize}
+\end{itemize}
+
+\subsection{BPEL 2.0}
+
+\item Sprache mit Ausführungssemantik und ohne visuelle Definition
+\item Veröffentlicher OASIS ( eine Vereinigung) Standard
+\item am Standard beteiligte Firmen: IBM, BEA, Intalio, JBOSS, SAP, Oracle,
+TIBCO Software, Microsoft, webMethods, Active Endpoints, Inc., Systinet,
+Adobe Systems\cite{25}
+\item Basiert auf XML: ja
+\item Wann: 11. April 2007 letzte Version\cite{25}
+\item Anzahl der Seiten: 264
+\item unterstützte Prozesse: abstrakte und ausführbare\cite{33}
+\item Dienstekomposition: ausschließlich Orchestrierung\cite{33}
+\item BPEL konzentriert sich auf Prozesse die mit Webservices interagieren.
+\item Struktur: blockstrukturiert, durch ,,structured activities{}`` auch
+teils graph-strukturiert\\
+( Gemeint sind Blöcke wie in Programmiersprachen )\\
+( Eine graph-basierte Design-Grundlage böte potentiell mehr Fähigkeiten
+einer Sprache )\\
+( Fachliche Modellierungen lassen sich schlechter blockstrukurriert
+umsetzen.\cite{34} )
+\item SOA-Einbeziehung:
+
+\begin{itemize}
+\item BPEL-Prozesse verwenden nur Webservices, wenn BPEL ohne Erweiterungen
+eingesetzt wird.
+\item erzwungene WSDL- Einbindung (Webservice Description Language)
+\end{itemize}
+\item Neu in BPEL 2.0
+
+\begin{itemize}
+\item New activity types: repeatUntil, validate, forEach (parallel and sequential),
+rethrow, extensionActivity, compensateScope
+\item Renamed activities: switch/case renamed to if/else, terminate renamed
+to exit
+\item Termination Handler added to scope activities to provide explicit
+behavior for termination
+\item Variable initialization
+\item XSLT\nomenclature{XSLT}{Extensible Stylesheet Language Transformations}
+for variable transformations (New XPath extension function bpws:doXslTransform)
+\item XPath access to variable data (XPath variable syntax \$variable{[}.part{]}/location)
+\item XML schema\nomenclature{XSD}{XML Schema Definition} variables in
+Web service activities (for WS-I doc/lit style service interactions)
+\item Locally declared messageExchange (internal correlation of receive
+and reply activities
+\item Clarification of Abstract Processes (syntax and semantics)
+\item Enable expression language overrides at each activity
+\item \cite{40}
+\end{itemize}
+\item Besonderheiten und Evaluierungsgrundlagen:
+
+\begin{itemize}
+\item expliziter Kontrollfluss: Navigation ist durch Kanten vorgegeben.
+und nicht durch Datenabhängigkeiten.\cite{33}
+\item impliziter Datenfluss: Der Datenfluss wird nicht über Kanten modelliert.
+Aktivitäten können (globale) Variablen lesen und schreiben und tauschen
+auf diese Art Daten aus.\cite{33}
+\item Ohne Erweiterung sind Unterprozesse nicht umsetzbar. Der Name der
+Erweiterung ist WS-BPEL 2.0 Extensions for Sub-Processes (BPEL-SPE)
+\item viele große Unternehmen unterstützen den Standard, jedoch gibt es
+noch nicht so viele BPEL-basierte Lösungen wie XPDL-basierte.
+\item Einige bekannte Experten bezeichnen WS-BPEL 2.0 vor dem Erscheinen
+von BPMN 2.0 als beste Lösung auf dem Gebiet der Dienst-Orchestrierung
+\item keine Standardisierung der visuellen Darstellung
+\item kennt ohne Erweiterung des Standards keine Zusammenarbeit mit Menschen
+\item Eine Prozessdefinition setzt sich zusammen aus einem BPEL-XML-Dokument
+und einem WSDL-XML-Dokument.
+\item Einige BPEL-basierte Systeme von großen Herstellern lassen BPEL im
+Hintergrund arbeiten währenddessen BPMN zur Visualisierung eingesetzt
+wird.\cite{33}
+\item BPEL besitzt eine umfangreichere Ausführungssemantik als XPDL, aber
+eine geringere Vielfalt als BPMN 2.0.
+\item Würden die Erweiterungen von BPEL standardisiert, dann gäbe es eine
+größere Konvergenz von BPEL zu BPMN.
+\item BPEL ist besser als BPMN in folgenden Dingen: Interoperabilität, Austauschbarkeit,
+garantierte Ausführbarkeit\cite{33}, Fehlerfindung, Deadlockerkennung,
+Qualitätschecks und Korrektheitsbeweise.
+\item Wird BPEL zur technischen Umsetzung eingesetzt, dann ist nur eine
+Untermenge von BPMN ausführbar.\cite{33}
+\item Es ist nicht vorgesehen, dass 2 Ausführungsthreads durch den gleichen
+Pfad verlaufen innerhalb einer einzelnen Prozessinstanz.
+\item Es gibt deutlich mehr Bücher über (WS-)BPEL als über XPDL.
+\item BPEL beinhaltet eine Umfangreiche Ausnahme- und Fehlerbehandlung,
+im Gegensatz zu XPDL.
+\item Transformationen:
+\item BPMN kann in BPEL umgewandelt werden. Grundlage ist nicht das ACID-Prinzip,
+sondern es gibt Gegenaktivitäten die kompensieren, das heißt rückgängig
+zu machen sind, wobei die ausgeführte Aktivität nicht tatsächlich
+rückgängig gemacht wird, da sie z.B. im Log noch enthalten ist und
+da die Veränderung schon erwirkt wurde.\cite{33}
+\item Alles außer manche Arten von Schleifen und manche Synchronisationen
+lässt sich direkt von BPMN in BPEL umwandeln.\cite{33}
+\end{itemize}
+
+\subsection{XPDL 2.1a}
+
+\item Sprache mit Ausführungssemantik und ohne visuelle Definition\nomenclature{XPDL}{XML Process Definition Language}
+\item Veröffentlicher: Workflow Management Coalition (WfMC)\cite{20}
+\item am Standard beteiligte Firmen: Global 360, Fujitsu Software, TIBCO
+Software, Bruce Silver Associates, Trisotech, UNISYS, Aspirin Software,
+FileNET, Prozone\cite{26}
+\item Wann: seit 1993 in Entwicklung, aktuell ist Version 2.1a vom 10.10.2008\cite{20}
+\item Dienstekomposition: Orchestrierung - das bedeutet dass XPDL der Realsierungsebene
+zuzuordnen ist.
+\item Struktur: graphen-orientiert
+\item XPDL konzentriert sich auf Prozesse die mit Menschen interagieren.
+\item Zweck: Definition einer XML basierten Sprachen-Vorschrift für die
+visuelle Notation von BPMN $\leq$ Version 1.1
+\item Inhalt: 
+
+\begin{itemize}
+\item Meta-Model für die Beschreibung der Prozessdefinition
+\item Begleitendes XML-Schema für den Austausch der Prozessdefinitionen
+\end{itemize}
+\item Anzahl der Seiten: 217
+\item Anzahl der Mitglieder der Standardisierungsvereinigung: 300; 25 mit
+voller Mitgliedschaft
+\item mehr als 70 BPM-Lösungen basieren auf XPDL
+\item Besonderheiten und Evaluierungsgrundlagen:
+
+\begin{itemize}
+\item In der Praxis bedeutet das, dass die Notwendigkeit der Erweiterung
+dazu führt, dass der Austausch von XPDL-Prozessen sich zwischen Unternehmen
+als schwierig erweist, weil unterschiedliche Firmen XPDL unterschiedlich
+erweitern. Damit existiert in der Praxis eine teilweise vorhandene
+Inkompatibilität zwischen Unternehmen, die XPDL implementiert haben.\cite{8}
+\item XPDL dürfte für kleine Unternehmen leichter umzusetzen sein, da der
+Standard nicht so komplex und umfangreich wie BPEL oder BPMN ist,
+und da XPDL entwickelt wurde um für die Notation von BPMN (vor BPMN
+2.0) eine XML-Gerüst zu bilden.
+\item Damit ein Anbieter über XPDL-Fähigkeiten werben kann, muss dies von
+der WfMC verifiziert werden.
+\item Es existiert ein Buch allein über XPDL in Englisch.
+\item Die Webservice Beschreibungssprache WSDL wird gebraucht für die Kommunikation
+zwischen Prozessen mit so genannten Message Flows. Message Flows werden
+auch gebraucht für die Kommunikation von Teilnehmern. Sie verbinden
+Pools in denen Prozesse liegen.
+\item Erweiterbarkeit:
+
+\begin{itemize}
+\item Es gibt erweiterte XML-Attribute und XML-Elemente. Überall in der
+XPDL-XML-Datei sind über Namespaces und durch das XPDL-XML-Schema
+Erweiterungen möglich.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{(WS-)BPEL-Erweiterungen}
+
+
+\subsection{BPEL4PEOPLE}
+\begin{itemize}
+\item zur Delegation von Prozessen zu Menschen, anstelle nur zu Webservices
+\item Ursprung: IBM und SAP
+\item Vorliegend als: Spezifikation 1.0
+\item Wann: Juni 2005 Veröffentlichung des Entwurfs, seit Februar 2008 im
+Standardisierungsprozess
+\item Inhalte:
+
+\begin{itemize}
+\item Erweiterung um die Aktivität ,,Mensch{}`` anstelle eines Prozesses
+\item Aufgabenlisten zwischen Menschen und Prozessen
+\item Organisations- und Rollenkonzepte
+\item verknüpfte Prozesse, z.B.:
+\item Vieraugenprinzip
+\item Eskalation und Delegation von BPEL-Prozessen
+\end{itemize}
+\item Mitlerweile setzt auch Oracle und Adobe diese Erweiterung ein
+\item \cite{33}
+\end{itemize}
+
+\subsection{WS-HumanTask}
+\begin{itemize}
+\item WS-HumanTask beschreibt die Webservices-Schnittstellen und Protokolle
+zur Beschreibung von Aufgaben und Benachrichtigungen für die Interaktion
+mit Menschen.
+\item Ursprung: Active Endpoints, Adobe Systems, BEA Systems, IBM, Oracle,
+SAP
+\item WS-HumanTask und BPEL4PEOPLE ergänzen sich und arbeiten zusammen.
+\item Vorliegend als: Spezifikation
+\item Wann: November 2006
+\item basiert auf XML
+\item Inhalte:
+
+\begin{itemize}
+\item Rollenkonzepte
+\item Defintion der visuellen Darstellung
+\item Definion von Aktivitäten der Menschen für die Interaktion mit Menschen
+\end{itemize}
+\item \cite{33}
+\end{itemize}
+
+\subsection{BPEL(-)SPE}
+\begin{itemize}
+\item Dies ist eine Erweiterung zur Aufteilung von umfangreichen Prozessen
+in mehrere Unterprozesse.
+\item Ursprung: IBM und SAP
+\item vorliegend als: Entwurf
+\item wann: 13.10.2005
+\item Es ist ein Entwurf für WS-BPEL 2.0 obwohl WS-BPEL am 11. April 2007
+herausgegen wurde.
+\item Praktischer Nutzen:
+
+\begin{itemize}
+\item Vereinfachung durch Modularisierung
+\item Trennung von logischen Abhängigkeiten zur Fehlereingrenzung
+\end{itemize}
+\item \cite{33}\nomenclature{BPEL(-)SPE}{WS-BPEL Extensions for Sub-processes}
+\end{itemize}
+
+\subsection{BPELJ}
+\begin{itemize}
+\item Definition des Einsatzes von Java innerhalb von BPEL-Code
+\item Ursprung: IBM und BEA
+\item vorliegend als: Entwurf
+\item praktischer Nutzen:
+
+\begin{itemize}
+\item geringerer Aufwand durch Verzicht auf Services und Einsatz der Programmierung
+im Kleinen.\\
+Java-Code ersetzt hierbei also Aktivitäten.
+\item Einsatz für Schleifen und Verzweigungen
+\end{itemize}
+\item Kritik:
+
+\begin{itemize}
+\item Die Prozess-Engine wird übergangen beim Ausführen des Java-Codes.
+Protokollierung, kompensationsbasierte Transaktionen finden nicht
+statt.
+\end{itemize}
+\item \cite{33}\nomenclature{BPELJ}{BPEL for Java}
+\end{itemize}
+
+\subsection{BPEL-E4X}
+\begin{itemize}
+\item Kombinierung mit der Javascript-Erweiterung E4X
+\item nicht standardisiert
+\item praktischer Nutzen:\\
+Vereinfachung der XML-Verarbeitung
+\item Ausschließlich umgesetzt im Apache ODE
+\item \cite{33}\nomenclature{BPEL-E4X}{BPEL ECMAScript for XML}
+\end{itemize}
+
+\subsection{II4BPEL}
+\begin{itemize}
+\item Mit II4BPEL sind in BPEL Inline-SQL-Befehle möglich und im Prozessdiagramm
+ersichtlich. 
+\item Ursprung: IBM
+\item vorliegend als: proprietäre Erweiterung, nicht standardisiert
+\item Prozessaktivitäten können direkt auf relationale Datenbanken zugreifen.
+Dem Geschäftsprozess bleiben die Datenbankdefinitionen verborgen.
+\item \cite{46}
+\end{itemize}
+\pagebreak{}
+
+
+\section{Anwendungsfallbeschreibung\protect \\
+von BPEL, XPDL, BPMN}
+
+\lettrine{X}PDL ist vorrangig dafür gedacht, Dokumente durch Menschen
+zu bearbeiten, wobei der Schwerpunkt von BPEL in der Orchestration
+von Webservices liegt, aber niemand wird davon abgehalten auch mit
+den anderen Standards eine SOA in Form von Webservices umzusetzen.\\
+\\
+Auch die Interaktion mit Menschen lässt sich mit BPEL seit dem Dokumenten-Entwurf
+von BPEL4PEOPLE und WS-HumanTask umfrangreich realisieren.\\
+\\
+Diese Webservices arbeiten größtenteils im Hintergrund auf einem Server.
+Der Schwerpunkt solcher Architekturen liegt auf Agilität. Wegen der
+Schnelllebigkeit von Plattformen und Anwedungen eignet sich eine SOA
+(Service Oriented Architecture) gut diesen Veränderungen entgegenzuwirken.
+\\
+\\
+XPDL lässt Fehlerbehandlungen und Kompensationsmechanismen vermissen,
+die dagegen in BPEL aufzufinden sind. Außerdem gibt es zwischen den
+Produkten die auf XPDL setzen größere Unterschiede, weil der XPDL-Standard
+erweitert wurde, da dies vorgesehen ist und XPDL nur eine Teilmenge
+von BPMN abdeckt. Erst XPDL 3.0 wird diese Lücke schließen. Jedoch
+wird noch viel Zeit vergehen bis XPDL 3.0 herausgegeben wird, da XPDL
+2.2 zunächst fertigzustellen ist.\\
+\\
+Den größten Umfang an Features und Möglichkeiten hat BPMN 2.0. Für
+BPMN 2.0 wird ein großer Bedarf an Schulung gebraucht und BPMN lässt
+sich auch kaum überblicken. Trotzdem wird damit geworben, dass BPMN
+auch für Nicht-IT-Experten geeignet ist \cite{34}.\\
+\\
+Letztendlich wird über die Standards nicht XML direkt programmiert,
+sondern Modellierer erzeugen den XML Code aus der Modellierung. Eine
+Umgebung, die teils graphisch, teils mit Formulareingaben arbeitet
+setzt am Ende den Standard um. Jedoch ist es oft notwendig selbst
+XML-Code zu schreiben.\\
+\\
+Das bedeutet, dass lediglich Programmierer die Rohfassung des jeweiligen
+Standards verstehen müssen. Anwender dagegen müssen die Modellierungsumgebung
+beherrschen und im BPMN-Standard die graphischen Vorgaben verstehen.
+Für XPDL gibt es da keine andere Alternative als den graphischen Anteil
+des BPMN Standards für die visuelle Darstellung. So sind im Standard
+von XPDL BPMN-Symbole sichtbar. Für WS-BPEL gibt es auch nicht standardisierte
+Visualierierungen in Editoren bzw Modellierern.\\
+\\
+Alle Modellierungen sind falsch und nur wenige sind nützlich \cite{37}.
+Ein besonders umfangreicher Standard, wie BPMN 2.0, macht diese Sichtweise
+bzw. Problematik noch schwieriger.
+
+
+\section{Zeitleiste der Sprachen-Auswahl}
+
+\lettrine{D}ie Grafik zeigt eine Auswahl aller hier relevanten Dokument-Beschreibungs-Sprachen
+und bedeutsamen Erweiterungen im Zeitverlauf.
+
+\begin{figure}[H]
+\caption{Zeitleiste BPEL(-Erweiterungen), XPDL, BPMN}
+
+
+\begin{centering}
+\includegraphics[scale=0.5]{zeitleiste-alex}
+\par\end{centering}
+
+\end{figure}
+
+
+
+\section{Einsatz in Software-Lösungen}
+
+\lettrine{I}n diesem Abschnitt werden Lösungen gelistet, die auf
+einem jeweiligen Standard basieren, einem Standard ähnlich sind, oder
+diesen teilweise umgesetzt haben. Die Informationspolitik der Unternehmen
+ist sehr unterschiedlich. Anbieter von Open-Source-Lösungen werben
+mit einem umfangreichem Faktenwissen. Informationen über kommerzielle
+Produkte sind sehr marketing-lastig. Eindeutige Informationen und
+100\% glaubwürdige Informationen lassen sich oft schwer finden. Anhand
+vieler Produktinformationen ist erkennbar, dass der Markt für BPM-Systeme
+stark umkämpft ist. So wirbt Oracle mit dem Satz: ,,Oracle Delivers
+the Future of BPM While IBM Is Stuck in the Past {}``. Deshalb sind
+Einschätzungen über vorhandene Standards von Experten und Consultants
+in einen intersubjektiven Konsenz zu bringen oder stringent und kritisch
+gegenüberzustellen. Diese Bachelorarbeit soll diesem Ziel gerecht
+werden.\\
+\\
+Eine wissenschaftliche Einschätzung der Güte, Professionalität, des
+Umfangs, des Erfolgspotentials von Produkten ist möglich wenn diese
+gekauft werden und eine Metrik entwickelt wird, die Anerkennung findet,
+damit diese Produkte verglichen werden können. Zur Zeit gibt es dazu
+nur die Workflow-Muster (vgl. \cite{32} u.a. Produktvergleich). Dies
+kann den Umfang einer wissenschaftlichen Arbeit umfassen. Da der Markt
+für BPMS jedoch einem ständigem Wandel unterzogen ist, veraltet solch
+eine Metrik und muss angepasst werden, so auch die Workflow-Muster.
+
+\bigskip{}
+
+
+
+\subsection{BPEL}
+
+\begin{center}
+\begin{table}[H]
+\caption{Webservice-zentrische Lösungen, nur BPEL-affin}
+\medskip{}
+\begin{longtable}{|c|c|c|}
+\multicolumn{1}{c}{Prozess-Engine} & \multicolumn{1}{c}{weitere Standards} & \multicolumn{1}{c}{Sonstiges}\tabularnewline
+\hline 
+\multirow{2}{*}{\textit{Vitria M3O}} & \multirow{2}{*}{BPMN} & Lauffähig unter: Windows, Red Hat, \tabularnewline
+ &  & Solaris, Amazon Elastic Compute Cloud\tabularnewline
+\hline 
+\textit{IBM WebSphere BPM} & BPMN & \tabularnewline
+\hline 
+\multirow{2}{*}{\textit{ORACLE BPM Suite}} & \multirow{2}{*}{BPMN} & poltert in der Produktwerbung \tabularnewline
+ &  & gegen IBM\tabularnewline
+\hline 
+\textit{ESN opusP } &  & \multicolumn{1}{c|}{viele Informationen werden }\tabularnewline
+\textit{ESB jBOSS jBPM} &  & vorenthalten\tabularnewline
+\hline 
+\multirow{4}{*}{\textit{K2}} & \multirow{4}{*}{teilweiswird BPEL} & Zusammenarbeit mit \tabularnewline
+ &  & MS Visual Studio und SAP, \tabularnewline
+ &  & wirbt mit harten Fakten über \tabularnewline
+ &  & Features und tiefem Einblick\tabularnewline
+\hline 
+\textit{Appian Enterprise} & BPMN & \tabularnewline
+\hline 
+\multirow{2}{*}{\textit{VDoc Process}} &  & \multirow{2}{*}{Lauffähig unter Linux und Windows}\tabularnewline
+ &  & \tabularnewline
+\hline 
+\textit{Metasonic Suite} &  & \tabularnewline
+\hline 
+\textit{webMethods ESB } & \multicolumn{1}{c|}{BPMN, BPEL4PEOPLE,} & \multicolumn{1}{c|}{Lauffähig unter Linux,}\tabularnewline
+\textit{(Software AG)} & BPEL4WS,XPDL & MAC,Windows \& mehr\tabularnewline
+\hline 
+\end{longtable}
+\end{table}
+
+\par\end{center}
+
+\begin{center}
+\bigskip{}
+\begin{table}[H]
+\caption{BPEL-basierende Lösungen}
+\medskip{}
+\begin{longtable}{|c|c|c|}
+\multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{kommerziell} & \multicolumn{1}{c}{Informationen}\tabularnewline
+\hline 
+\multirow{2}{*}{jBPM} & \multirow{2}{*}{nein} & implementiert im Applikationsserver JBOSS, \tabularnewline
+ &  & Finanzierung durch Support\tabularnewline
+\multirow{2}{*}{Apache ODE} & \multirow{2}{*}{nein} & \multirow{2}{*}{Web-Service-Orchestrations-Engine}\tabularnewline
+ &  & \tabularnewline
+\multirow{2}{*}{Intalio|BPMS} & \multirow{2}{*}{nein} & Prozessdesigner und Delegierer \tabularnewline
+ &  & von menschlichen Aufgaben\tabularnewline
+\multirow{2}{*}{BPEL SE} & \multirow{2}{*}{nein} & implementiert im OpenESB von ehemals \tabularnewline
+ &  & Sun Microsystems, heute Oracle\tabularnewline
+\multirow{2}{*}{ActiveVOS} & \multirow{2}{*}{ja} & Prozessmanagement, unterstützt \tabularnewline
+ &  & BPEL4PEOPLE und BPMN\tabularnewline
+\multirow{2}{*}{Oracle BPEL Process Manager} & \multirow{2}{*}{ja} & unterstützt menschliche Workflows\tabularnewline
+ &  & \tabularnewline
+\multirow{2}{*}{SAP Exchange Infrastructure} & \multirow{2}{*}{ja} & systemübergreifende Geschäftsprozesse \tabularnewline
+ &  & im Prozessmanagement\tabularnewline
+\multirow{2}{*}{SEEBURGER Business Integration Server} & \multirow{2}{*}{ja} & \multirow{2}{*}{Integration von Geschäftsprozessen}\tabularnewline
+ &  & \tabularnewline
+\multirow{2}{*}{WebSphere Process Server} & \multirow{2}{*}{ja} & \multirow{2}{*}{Prozessmanagement}\tabularnewline
+ &  & \tabularnewline
+\multirow{2}{*}{Microsoft BizTalk Server} & \multirow{2}{*}{ja} & Enterprise Service Bus \tabularnewline
+ &  & mit Orchestrierung\tabularnewline
+Microsoft Windows  & \multirow{2}{*}{ja} & Teil von .NET, seit Version 3.0 und \tabularnewline
+Workflow Foundation &  & Visual Studio 2005, Workflowmanagement\tabularnewline
+Serena Business  & \multirow{2}{*}{ja} & \multirow{2}{*}{Prozessmanagement}\tabularnewline
+Mashups Server &  & \tabularnewline
+\hline 
+\end{longtable}
+
+\end{table}
+
+\par\end{center}
+
+
+\subsection{Prozessmodellierung und BPMN}
+
+\begin{center}
+\begin{table}[H]
+\caption{BPMN 1.1 Lösungen}
+\medskip{}
+\begin{longtable}{|c|c|}
+\multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{Gattung}\tabularnewline
+\hline 
+AENEIS & Prozessmanagement\tabularnewline
+\hline 
+BizAgi & Prozessmanagement\tabularnewline
+\hline 
+iGRAFIX Process/-Flowcharter & Visualisierung\tabularnewline
+\hline 
+itp commerce & Prozessmanagement\tabularnewline
+\hline 
+Signavio & Prozessmanagement\tabularnewline
+\hline 
+Appian Enterprise & Prozessmanagement\tabularnewline
+\hline 
+Select Architect & Modellierung\tabularnewline
+\hline 
+Xpert ivy & Prozessmanagement\tabularnewline
+\hline 
+Vitria M3O & Prozessmanagement\tabularnewline
+\hline 
+PAVONE (Process Modeler,...) & Prozessmanagement\tabularnewline
+\hline 
+\end{longtable}
+\end{table}
+
+\par\end{center}
+
+\begin{center}
+\bigskip{}
+\begin{table}[H]
+\caption{BPMN 2.0 Lösungen}
+\medskip{}
+\begin{longtable}{|c|c|c|}
+\multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{Web} & \multicolumn{1}{c}{BPMN nur zur Modellierung?}\tabularnewline
+\hline 
+Activiti & activiti.org & Ausführung von BPMN\tabularnewline
+\hline 
+Business Process Incubator  & BusinessProcessIncubator.com  & ja\tabularnewline
+\hline 
+\multirow{2}{*}{intellivate : IYOPRO } & \multirow{2}{*}{www.iyopro.com } & BPMN Modellierung, \tabularnewline
+ &  & Ausführung und Simulation\tabularnewline
+\hline 
+JBoss, RedHat - jBPM 5.0 & www.jboss.org/jbpm  & Ausführung von BPMN\tabularnewline
+\hline 
+Joinwork Process Studio & www.joinwork.com  & ja\tabularnewline
+\hline 
+Innovator for Business Analysts & www.mid.de/products  & ja\tabularnewline
+\hline 
+SAPERION AG: SAPERION  & \multirow{2}{*}{www.saperion.com} & Ausführung von BPMN\tabularnewline
+\cline{3-3} 
+ECM \& Workflow &  & \tabularnewline
+\hline 
+ARIS Toolset & www.ariscommunity.com & Visualisierung\tabularnewline
+\hline 
+\end{longtable}
+
+\end{table}
+
+\par\end{center}
+
+
+\subsection{XPDL}
+
+\begin{table}[H]
+\caption{humanzentrische Lösungen, nur XPDL affin}
+\medskip{}
+\begin{longtable}{|c|c|c|}
+\multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{Produkt}\tabularnewline
+\hline 
+Vitria & PAVONE Espresso Workflow & Ultimus Adaptive BPM Suite\tabularnewline
+\hline 
+VDoc Process & webMethods BPM (Software AG) & imatics {*}ProcessSuite\tabularnewline
+\hline 
+COSA BPM Suite & ESN opusP // XPDL, JPDL & Metasonic Suite\tabularnewline
+\hline 
+IBM FileNet Business  & \multirow{2}{*}{Action Works} & \multirow{2}{*}{Appian Enterprise}\tabularnewline
+Process Manager &  & \tabularnewline
+\hline 
+inubit BPM-Suite & K2 & Ultimus BPM suite\tabularnewline
+\hline 
+Metastorm BPM & Sungard Infinity Engine & TIBCO Business Studio\tabularnewline
+\hline 
+SAPERION Workflow &  & \tabularnewline
+\hline 
+\end{longtable}
+
+\end{table}
+
+
+\begin{center}
+\bigskip{}
+\begin{table}[H]
+\caption{XPDL-basierte Lösungen}
+
+
+\centering{}(Anzahl der Produkte insgesamt: 73)\medskip{}
+\begin{longtable}{|c|c|c|}
+\multicolumn{1}{c}{Produkt} & \multicolumn{1}{c}{XPDL-Version} & \multicolumn{1}{c}{Gattung}\tabularnewline
+\hline 
+Active Endpoint\textquoteright{}s ActiveVOS & 2.1 & Prozessautomatisierung\tabularnewline
+iGrafx & 2.1 & Prozessanalyse\tabularnewline
+Lombardi's Blueprint  & 2.1 & Prozessmanagement\tabularnewline
+QualiWare & 2.1 & Prozessmanagement\tabularnewline
+\hline 
+FileNet Business  & \multirow{2}{*}{2.0} & \multirow{2}{*}{Prozessmanagement}\tabularnewline
+Process Manager 4.0 &  & \tabularnewline
+Global 360 Business  & \multirow{2}{*}{2.0} & \multirow{2}{*}{Prozessmanagement}\tabularnewline
+Optimzation Server (BOS) &  & \tabularnewline
+\hline 
+\end{longtable}
+\end{table}
+
+\par\end{center}
+
+
+\section{Verfügbarkeit von Modellierern bzw. Editoren}
+
+\lettrine{Z}um einen gibt es freie Lösungen, die alte Versionen der
+Standards unterstützen. Dazu zählt JPEd (XPDL 1.0). \\
+\\
+Der Signavio Process Editor 5.0.0 ist eine professionelle web-2.0-basierte
+Cloud-Lösung. Die Enterprise-Version lässt sich auf einem Rechner
+direkt installieren wobei die Daten auf dem Rechner bleiben, ohne
+Cloud. Mit diesem Process Editor und Modellierer lassen sich BPMN-2.0-Diagramme
+modellieren, aber auch BPMN 1.2, EPK, jBPM/jPDL, Petrinetze, Organigramme
+und mehr. Diese Modellierungen lassen sich sowie exportieren als auch
+importieren von/in BPMN 2.0,XPDL 2.1, jPDL 4. Als Student kann man
+das webbasierte Produkt über die BPMACADEMIC Initiative kostenlos
+nutzen. Die Bedienung ist intuitiv über ,,Drag and Drop{}``. Der
+Aufbau der GUI-Elemente ähnelt stark der einer Desktop-Software. Das
+Berliner Unternehmen Signavio hat einen Preis für ihr Produkt erhalten
+in der Kategorie ,,innovativste und mustergültigste Projekt der Kategorie
+Prozessmodellierung{}``\cite{44}.
+
+\begin{figure}[H]
+\caption{Signavio Process Editor, web-basiert}
+
+
+\begin{centering}
+\includegraphics[scale=0.37]{signavio}
+\par\end{centering}
+
+Links lassen sich die Elemente per Drag-and-Drop auf die Bildfläche
+schieben und verknüpfen. Im Menü kann exportiert und importiert werden.
+Intern in der Cloud existiert eine virtuelle Verzeichnishierarchie
+dessen Dokumente heruntergeladen werden können.
+\end{figure}
+
+
+\medskip{}
+Ein weiterer Editor/Modellierer für BPEL ist der eclipse BPEL Designer,
+auf den näher eingegangen wird im Abschnitt ,,(WS-)BPEL-2.0-Beispiel{}``.
+Dieser ist frei verfügbar, jedoch zur Zeit leider erst in Version
+0.5.\\
+\\
+Tibco Buisness Studio ist eine kostenloses Produkt zum Modellieren,
+Managen, Simulieren und Implementieren von Prozessen u.a. in BPMN.
+Eine Installation der Lösung erwies sich als nicht lauffähig, sowohl
+unter Linux als auch unter Windows. Das Designer-Programm basiert
+auf einer veralteten Eclipse-Version von 2008, die ohne Zusatzkomponenten
+nicht sinnvoll nutzbar ist. Es können keine Modelle erstellt werden.
+Die MEGA Suite bietet ein Modellierungswerkzeug für BPMN über das
+jedoch nur wenig brauchbare Informationen gefunden werden können.
+\\
+\\
+Der Together Workflow Editor 4.0-1 von Together Teamsolutions unterstützt
+einen Teil von XPDL 2.1 und ist Opensource mit GPL-Lizenz. In Zukunft
+wird dieser Editor mehr von XPDL 2.1 unterstützen. BPMN-1.2-Elemente
+lassen sich graphisch platzieren. Aus dieser Platzierung wird XPDL-Code
+generiert, der sich editieren lässt. XPDL-1.0-Code lässt sich in XPDL-2.1-Code
+übersetzen. Beliebige XPDL-Dateien lassen sich importieren und lassen
+sich graphisch darstellen.\\
+\begin{figure}[H]
+\begin{centering}
+\caption{Together Workflow Editor 4.0-1}
+\includegraphics[scale=0.3]{twe4}
+\par\end{centering}
+
+\end{figure}
+
+
+\pagebreak{}
+
+
+\section{Zukunftsaussichten von BPEL, XPDL, BPMN}
+
+\lettrine{S}owohl WS-BPEL, XPDL als auch BPMN haben eine gute Zukunftsfähigkeit
+für mehrere Jahre, dabei hat BPMN die beste, BPEL die zweitbeste und
+XPDL die schlechteste Zukunftsfähigkeit. Es wird an weiteren Versionen
+für all diese Standards gearbeitet, (z.B. BPMN 2.1 \cite{34}). Die
+Arbeit an XPDL 2.2 findet aktuell statt. Dazu finden sich einige Veröffentlichungen
+im Internet. XPDL 3.0 ist geplant. An BPMN 2.1 wird bereits entwickelt.
+Über zukunftige Versionen von WS-BPEL liegen keine Informationen vor.\\
+\\
+ Jedoch ist davon auszugehen, dass WS-BPEL noch viele Jahre existieren
+wird\cite{33}. Schließlich ist der architektonische Anwendungsfall
+von WS-BPEL nicht exakt der von BPMN oder XPDL, Stichwort SOA und
+gute Ausführungssemantik von WS-BPEL. Jedoch gibt es BPMN-Enthusiasten,
+denen nachgesagt wird, dass BPEL nicht mehr gebraucht wird, da 2011
+BPMN 2.0 herausgegeben worden ist \cite{33} und diese Version sehr
+viel umfassender ist. Es wird in \cite{36} beschrieben, welche Nachteile
+BPMN 2.0 hat, um am Ende auszusagen, dass es trotzdem keine Alternative
+zu BPMN gibt. XPDL und BPEL findet keine Erwähnung darin.\\
+\\
+Da alle Standards auf XML-Sprachen, wie XML-Schema, XPath usw. setzen,
+führt der Einsatz dieser zu Investitionssicherheit und Herstellerunabhängigkeit
+(teils \cite{38}). Schließlich ermöglicht dies eine potentiell mögliche
+aber in der Praxis schwierige Transformation z.B. u.a. mit XSLT.\\
+\\
+Die Texte die über die Standards berichten, loben sie entweder ausgiebig
+mit wenig Gegenkritik oder beschreiben wie wenig perfekt die BPM-Welt
+ist, da es Ziele der Standards gibt, die teilweise gegeneinander arbeiten.
+So arbeitet die Nutzerfreundlichkeit gegen die Vielseitigkeit usw.
+BPMN ist der umfangreichste Standard und hat das größte Zukunftspotential,
+da Notation und Ausführungssemantik zusammen standardisiert wurden
+und große Unternehmen mitgewirkt haben.\\
+\\
+XPDL 2.x wurde als XML-Ausführungssemantik für das zunächst rein visuelle
+BPMN 1.x entwickelt. Weitere XPDL-Versionen dienen hauptsächlich der
+Weiterentwicklung bereits XPDL-basierter Systeme, da XPDL nahezu obsolet
+geworden ist seit BPMN 2.0. Diese Systeme gibt es heute in größerem
+Umfang als BPEL-basierte Systeme. XPDL 2.2 wird nur eine Untermenge
+von BPMN 2.0 bedienen \cite{37}. Für die Version 3.0 ist bisher geplant,
+dass BPMN 2.0 vollständig abdeckt wird.\\
+\\
+BPEL macht da Sinn wo Prozesse schnell in der IT-Abteilung umgesetzt
+werden müssen und autmatisch abzulaufen haben, so z.B. bei Banken
+und Versicherungen,Telekommunikations-Unternehmen, in der Energiewirtschaft
+und Logistikbranche und in der Automobilindustrie\cite{38}. Außerdem
+genügt BPEL, wenn nur die Orchestrierung relevant ist und Choreographien
+nicht gebraucht werden. BPMN unterstützt beides und erweitert beide
+Konzepte.
+
+
+\section{Zukunftsaussichten der WS-BPEL-Erweiterungen}
+
+\lettrine{D}a vollautomatische Abläufe eher die Ausnahme sind und
+deshalb die Dokumentenentwürfe BPEL4PEOPLE und WS-HumanTask besonders
+notwendig sind, wird es in Zukunft weiterhin Technologien geben, die
+menschliche Interaktionen für BPEL ermöglichen. \\
+Da Torsten Winterberg, Leiter des Competence Centers SOA der OPITZ
+CONSULTING GmbH, in\cite{38} indirekt davon ausgeht, dass zukünftige
+Versionen von BPEL mögliche menschliche Interaktionen beinhalten,
+kann jedoch noch nicht \textbf{sicher} davon ausgegangen werden dass
+neue BPEL Versionen WS-HumanTask und BPEL4PEOPLE beinhalten oder erweitern
+bzw. integrieren. \\
+\\
+Diese Erweiterungen für BPEL wurden u.a. von großen Firmen entwickelt
+(IBM, SAP, Active Endpoints, Adobe Systems, BEA Systems, Oracle).
+Wegen der besonderen Notwendigkeit und der Marktbeherrschung dieser
+Unternehmen und wegen dem bisherigen Fehlen einer beschriebenen Alternative
+zu den Erweiterungen und weil die Erweiterungen schon in Produkten
+umgesetzt wurden, gibt es eine relativ hohe Wahrscheinlichkeit, dass
+auch weitere und zukünftige Produkte darauf aufbauen. \\
+\\
+Wenn es eine Notwendigkeit gibt, dass BPEL weiterhin dahingehend eingegrenzt
+wird, sich nur mit automatischen Prozessen auseinanderzusetzen, bleibt
+eine Trennung zwischen Erweiterungen und BPEL-Standard vorhanden.
+Eine so vorhandene Modularisierung von Standards bzw. Spezifikationen
+lohnt sich, wenn BPMS nicht für alle Anwendungsszenarien eingesetzt
+werden sollen, die erdenklich sind.\\
+\\
+Der Einsatz von BPELJ (BPEL in Kombination mit Java), wird von verschiedenen
+Seiten systematisch angegriffen, (z.B. \cite{39}). Der Einsatz von
+Java statt Programmierung (Modellierung) mit einer Prozessbeschreibungssprache
+wie WS-BPEL umgeht die Prozessengine. Diese ermöglicht aber erst Monitoring,
+Logging, speziellen Automatismen etc. Es ist daher fragwürdig BPEL
+durch eine Hochsprache zu ersetzen. BPELJ hat keine sichere Zukunft.
+Die Ausnahmebehandlung, die in BPEL standardisiert wurde, bietet außerdem
+eine Systematik, die in Java ungünstiger umsetzbar ist. Der Einsatz
+einer Hochsprache ist ,,quick and dirty{}``. Jedoch lassen sich
+in Java auch Lösungen umsetzen, die keine Workflows sind.\\
+\\
+BPEL-E4X (Kombinierung von Javascript und BPEL) wurde bisher nur im
+Apache ODE eingesetzt. Sie vereinfacht die XML-Verarbeitung sehr.
+Da diese Erweiterung bisher nur in einem Projekt Anwendung gefunden
+hat und die Erweiterung proprietär ist, ist die Zukunftsfähigkeit
+nicht abschätzbar.\\
+\\
+BPEL-SPE - der Entwurf für die Unterstützung von Unterprozessen für
+WS-BPEL existiert seit September 2005. Es wurde nicht standardisiert,
+weshalb die Zukunft der Erweiterung ungewiss ist. Ebenfalls nicht
+standardisiert ist II4BPEL und somit ist dessen Zukunft auch ungewiss.
+
+
+\chapter{Beispielhafte Erklärung\protect \\
+von BPEL, XPDL, BPMN}
+
+\lettrine{I}n allen Beispielen wurde sich für ein möglichst einfaches
+Beispiel entschieden, da schon leicht größere Beispiele sehr viel
+Text verbrauchen. Es gibt schon genug Bücher und wissenschaftliche
+Arbeiten dazu und den jeweiligen Standard in Textform selbst. Durch
+diese Texte ist es möglich sich in einen Standard einzuarbeiten. Das
+Rad muss hier nicht neu erfunden werden.
+
+
+\section{(WS-)BPEL-2.0-Beispiel}
+
+\lettrine{D}as Beispiel wurde mit dem Eclipse BPEL Designer modelliert
+und generiert und mit wenig XML-Quelltext erweitert, der sich in \cite{33}
+vorfand. In dem Beispiel werden keine anderen Services aufgerufen,
+sondern lediglich Daten kopiert. Es wird für BPEL auch immer eine
+WSDL-Datei oder mehrere WSDL-Dateien angelegt, die zu bearbeiten sind.
+In dem Beispiel wird ein Name angefordert und darauf ein Hallo ,,Name{}``
+zurückgegeben. In diesem Beispiel gibt es eine Anforderung und darauf
+eine Antwort. Um dies anzusteuern braucht man so genannte Partnerlinks,
+die die Quellen und Ziele verlinken.
+
+\begin{wrapfigure}{r}{5cm}
+\centering {
+\caption{BPEL-Modellierungs-Beispiel} 
+\includegraphics[scale=1]{\string"../Arbeit - V02/beispiel bpel/bpel-ausschnitt\string".png}}
+\end{wrapfigure} \medskip{}
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+Dies ist die Ansicht des BPEL Designers von Eclipse, in der eine grobe
+Übersicht der BPEL-Datei vorgefunden werden kann. Der XML-Aufbau der
+BPEL-Datei wird als Grafik abstrahiert. Oben ist der Startpunkt. Unten
+ist der Endpunkt. die Zeichenketten sind Bezeichner. Die Symbole repräsentieren
+XML-Tags. Die Funktionsweise des BPEL-Prozesses ist daraus ersichtlich.
+Es gibt keinen Standard für so eine visuelle Darstellung. Andere Konkurrenzprodukte
+zum BPEL Designer visualisieren BPEL anders.\\
+\vspace{4cm}
+
+
+\begin{figure}[H]
+\begin{centering}
+\caption{BPEL-Beispiel für Modellierungsformulare}
+\includegraphics[scale=0.35]{\string"../Arbeit - V02/beispiel bpel/fenster\string".png}
+\par\end{centering}
+
+Das ist eine Formularübersicht im BPEL Designer von Eclipse, mit der
+BPEL-XML-Code generiert werden kann über Auswahlfelder und Eingaben.
+Diese Ansicht erscheint bei der Auswahl eines BPEL-Elements des Bildes
+zuvor. \\
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\caption{BPEL-Beispiel für XML-Informationen als GUI}
+\includegraphics{\string"../Arbeit - V02/beispiel bpel/fenster2\string".png}
+\par\end{centering}
+
+Dies ist ein Ausschnitt aus dem BPEL-Designer von Eclipse, in der
+grundsätzliche BPEL-XML-Strukturen auf eine GUI abstrahiert werden,
+was das Verständnis vereinfacht. Jedoch ist Grundwissen über BPEL
+zum Verständnis erforderlich.\\
+\end{figure}
+
+
+{\small \lstinputlisting[language=bpel]{helloworld.bpel}}{\small \par}
+
+\begin{figure}[H]
+\begin{centering}
+\caption{BPEL-Beispiel für XML-Informationen als GUI mit Formulareingabe}
+\includegraphics[scale=0.7]{\string"../Arbeit - V02/beispiel bpel/wsdl-ausschnitt\string".png}
+\par\end{centering}
+
+Dies ist ein Ausschnitt der WSDL-XML-Definition für Webservices. Die
+WSDL-XML-Datei wird auf eine GUI abstrahiert und vereinfacht und reduziert.
+Die meisten Texte sind Bezeichner und lassen sich editieren. Die Symbole
+repräsentieren XML-Tags, hinter denen eine Semantik steckt. Ein Grundsätzliches
+Verständnis von WSDL ist auch hier erforderlich.\\
+\end{figure}
+
+
+Im Folgenden ist das zugehörige Dokument der Web-Service-Beschreibungssprache
+sichtbar. Darin werden Webservices beschrieben und die Kommunikation
+mit XML-Tags definiert.
+
+\lstinputlisting{helloworldArtifacts.wsdl}
+
+
+\section{BPMN-2.0-Beispiel}
+
+\begin{wrapfigure}{r}{9cm}
+\centering {
+\caption{Hello-World-BPMN-Diagramm} 
+\includegraphics[scale=0.7]{\string"../Arbeit - V02/hallo welt 2 bpmn\string".png}}
+\end{wrapfigure} ~\\
+~\\
+~\\
+\lettrine{D}ieses Beispiel macht nichts anderes, als einen Hallo-Welt-Prozess
+aufzurufen.\\
+\\
+Grafische XML-Beschreibungen wurden nicht entfernt, da sie BPMN besonders
+ausmachen und alte Versionen von BPMN lediglich die graphische Darstellung
+beschrieben haben.\medskip{}
+
+
+{\small \lstinputlisting[language=XML]{HalloWelt2.bpmn.xml}}{\small \par}
+
+\medskip{}
+
+
+<process>,<startEvent>,<endEvent> ist selbsterklärend. <task> stellt
+eine Aktivität dar.<extensionElements> sind umzäunen standardisierte
+erlaubte Abweichungen vom Standard. <incoming> und <outgoing> beschreiben
+die Transitionen, also die gerichteten Verbindungen zwischen den Aktivitäten.
+<sequenceFlow> Tags definieren gewöhnlich Bedingungen zum Durchlaufen
+des Prozesses. Sie sind nützlich für Parallelisierungen mit Gateways.
+Gateways trennen und Verbinden Parallelisierungen. der <bpmndi:...
+Namespace existiert zur Definierung der graphischen Darstellung. Die
+Tags darin sind selbsterklärend. \\
+
+
+
+\section{XPDL-2.1a-Beispiel}
+
+\lettrine{D}ieses Beispiel entspricht dem Beispiel oben von BPMN.
+Grafische Angaben wie ,,fettgedruckt im Diagramm{}`` und Koordinaten
+wurden entfernt.
+
+\medskip{}
+
+
+{\small \lstinputlisting[language=XML]{HalloWelt2.xpdl.xml}}{\small \par}
+
+\medskip{}
+
+
+Die Pool-Tags beschreiben die Orchestrierung, darin befindet sich
+gewöhnlich ein Prozess, der einer Person zugeordnet sein kann. <Acitivity>
+beschreibt eine Aktivität. Diese Aktivität kann einem Menschen oder
+einer Arbeitsaktivität entsprechen. <Transition> beschreibt eine Verbindung
+zwischen Aktivitäten mit Richtungsangabe. In ,,From{}`` und ,,To{}``
+liegen die IDs der Aktivitäten die verbunden werden.
+
+ 
+
+
+\chapter{Musterbasierter Vergleich}
+
+
+\section{allgemeines Wissen über Muster}
+
+\lettrine{D}ie Muster finden sich nicht direkt in den Standards,
+sondern indirekt. Das bedeutet, dass sie nicht einfach gefunden werden
+können. Die Realisierung des jeweiligen Standards ist verschieden.
+Die Muster definieren die kleinen gemeinsamen Nenner der Standards
+in ihrer unterschiedlichen architektonischen Umsetzung, jedoch nicht
+vollständig. Artefakte ( Formen von Notizen) finden sich zum Beispiel
+nicht in den Mustern. Worflow-Muster beschreiben den praktischen Nutzen
+einer Funktionalität für das Modellieren in einer Prozessbeschreibungssprache
+oder in einem Workflowsystem.\\
+\\
+Die Muster wurden erweitert und formuliert durch Prof. dr. ir. W.M.P.
+van der Aalst, Prof. Arthur HM ter Hofstede, Dr Nick Russell. Es gibt
+mehr als 120 Muster. In einer Bachelorarbeit kann man also keine vollständige
+Abdeckung aller Muster erwarten.\\
+\\
+Da die offiziellen Muster bis vor einigen Jahren entwickelt und veröffentlicht
+wurden, ist davon auszugehen, dass es heute weitere unentdeckte Muster
+gibt. Konkurrierend zu der Einteilung dieser Muster gibt es auch eine
+andere Perspektive und eine andere Klassifikation, die jeweils jedoch
+nicht den professionellen Charakter der van-der-Aalst-Klassifikation
+hat.\\
+\\
+Die Steuerungsfluss-Muster beziehen sich auf die Steuerung des Token,
+z.B. in der Parallelisierung, Auswahl und Synchronisation usw. Ursprünglich
+gab es 20 Muster für diese Einteilung. Nun sind es mehr als 40.\\
+\\
+Daten-Muster beziehen sich auf führen von Informationen, darunter
+den Rahmen von Variablen.\\
+\\
+Die Ressourcen-Muster betrachtet die Freigabe und Delegation von Ressourcen
+zu Aufgaben usw.\\
+\\
+Ausnahmebehandlungs-Muster betrachten Ursachen von Ausnahmen und Handlungsmöglichkeiten
+darauf.
+
+
+\section{Vergleich mit vorhandenen\protect \\
+Steuerungsfluss-Mustern}
+
+\lettrine{A}lle Texte dieses Abschnitts stammen aus: \cite{32}\\
+Vergleiche wurden auf die Neuen Versionen bezogen.\\
+Detailierte Bedeutungserklärung der Musters finden sich auf http://www.workflowpatterns.com/patterns/
+.
+
+\begin{center}
+\medskip{}
+
+\par\end{center}
+\begin{itemize}
+\item Steuerungs-Fluss-Muster
+
+\begin{itemize}
+\item Grundlegende Steuerungsfluss-Muster \medskip{}
+Sie erfassen elementare Aspekte des Kontrollflusses and sind den Definitionen
+dieser Konzepte ähnlich, die die WfMC vorgeschlagen hat.\medskip{}
+\begin{table}[H]
+
+
+\centering{}\caption{grundlegende Steuerungs-Fluss-Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\multicolumn{1}{c}{Muster} & \multicolumn{1}{c}{BPMN 2.0} & \multicolumn{1}{c}{XPDL 2.1a} & \multicolumn{1}{c}{BPEL 2.0}\tabularnewline
+\hline 
+Sequence & ja & ja & ja\tabularnewline
+\hline 
+Parallel Split & ja & ja & ja\tabularnewline
+\hline 
+Synchronization & ja & ja & ja\tabularnewline
+\hline 
+Exclusive Choice & ja & ja & ja\tabularnewline
+\hline 
+Simple Merge & ja & ja & ja\tabularnewline
+\hline 
+\end{tabular}\\
+\cite{32} (und überprüft für die neuen Versionen)
+\end{table}
+\medskip{}
+
+\item Muster der erweiterten Aufteilung und Synchronisation\medskip{}
+Obwohl diese Muster relativ üblich sind in der Praxis, werden diese
+Muster oft nicht direkt unterstützt oder sie sind sogar zur wiedergabe
+fähig in vielen kommerziellen Angeboten. Ursprünglich gab es 4 solcher
+Muster: Multi-Choice, Synchronizing Merge, Multi-Merge and Discriminator.\medskip{}
+\begin{table}[H]
+\begin{centering}
+\caption{Muster der erweiterten Aufteilung und Synchronisation}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\multicolumn{1}{c}{Muster} & \multicolumn{1}{c}{BPMN 2.0} & \multicolumn{1}{c}{XPDL 2.1a} & \multicolumn{1}{c}{BPEL 2.0}\tabularnewline
+\hline 
+Multi Choice & ja & ja & halb\tabularnewline
+\hline 
+Structured Synchronizing Merge & ja & ja & halb\tabularnewline
+\hline 
+Multi-Merge & ja & ja & nein\tabularnewline
+\hline 
+Structured Discriminator & ja & fast & nein\tabularnewline
+\hline 
+Blocking Discriminator & ja & fast & nein\tabularnewline
+\hline 
+Cancelling Discriminator & ja & ja & nein\tabularnewline
+\hline 
+Structured Partial Join & ja & fast & nein\tabularnewline
+\hline 
+Blocking Partial Join & ja & fast & nein\tabularnewline
+\hline 
+Cancelling Partial Join & ja & fast & nein\tabularnewline
+\hline 
+Generalised AND-Join & ja & ja & nein\tabularnewline
+\hline 
+Local Synchronizing Merge & ja & nein & ja\tabularnewline
+\hline 
+General Synchronizing Merge & nein & nein & nein\tabularnewline
+\hline 
+Thread Merge & ja & ja & ja\tabularnewline
+\hline 
+Thread Split & ja & ja & ja\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+
+\end{table}
+\medskip{}
+
+\item Muster der mehrfachen Instanzen\medskip{}
+Sie beschreiben Situationen in einem Prozessmodell, in denen mehrere
+Ausführungs-Threads aktiv sind. Das Prozessmodell bezieht sich auf
+die selbe Aktivität und teilt deshalb die gleiche Umsetzungsfestlegung
+mit ihr.\medskip{}
+\begin{table}[H]
+
+
+\begin{centering}
+\caption{Muster der mehrfachen Instanzen}
+\medskip{}
+\begin{tabular}{|c|c|c|c|c}
+\multicolumn{1}{c}{Muster} & \multicolumn{1}{c}{BPMN 2.0} & \multicolumn{1}{c}{XPDL 2.1a} & \multicolumn{1}{c}{BPEL 2.0} & \tabularnewline
+\cline{1-4} 
+{\small Multiple Instances without Synchronization} & {\small ja} & {\small ja} & {\small ja} & \tabularnewline
+\cline{1-4} 
+{\small Multiple Instances with a Priori Design-Time Knowledge} & {\small ja} & {\small ja} & {\small ja} & \tabularnewline
+\cline{1-4} 
+{\small Multiple Instances with a Priori Run-Time Knowledge} & {\small ja} & {\small ja} & {\small ja} & \tabularnewline
+\cline{1-4} 
+{\small Multiple Instances without a Priori Run-Time Knowledge} & {\small nein} & {\small nein} & {\small nein} & {\small mit AJaX\nomenclature{AJaX}{Asynchronous JavaScript and XML}
+möglich}\tabularnewline
+\cline{1-4} 
+{\small Static Partial Join for Multiple Instances} & {\small ja} & {\small fast} & halb & \tabularnewline
+\cline{1-4} 
+{\small Cancelling Partial Join for Multiple Instances} & {\small ja} & {\small fast} & {\small ja} & \tabularnewline
+\cline{1-4} 
+{\small Dynamic Partial Join for Multiple Instances} & {\small nein} & {\small nein} & {\small nein} & {\small mit AJaX\nomenclature{AJaX}{Asynchronous JavaScript and XML}
+möglich}\tabularnewline
+\cline{1-4} 
+\end{tabular}
+\par\end{centering}
+
+\end{table}
+\medskip{}
+
+\item Zustands-basierte Muster\medskip{}
+Sie geben Situationen wider dessen Lösungen meistens einfach in Prozessbeschreibungssprachen
+bewerkstelligt sind und zwar mit der Notation des Zustandes. In diesem
+Zusammenhang wird der Zustand einer Prozessinstanz betrachtet. Dies
+geschieht um die ausgeweitete Zusammenstellung von Daten einzubeziehen.
+Die Zusammenstellung ist verbunden mit der zugleich stattfindenden
+Ausführung. In der Ausführung einbezogen ist der Status von verschiedenen
+Aktivitäten und einbezogen sind die prozess-relevatenten Arbeitsdaten,
+wie z.B. Aktivitäten und case-data-Elemente.\\
+\medskip{}
+\begin{table}[H]
+\begin{centering}
+\caption{Zustands-basierte Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\multicolumn{1}{c}{Muster} & \multicolumn{1}{c}{BPMN 2.0} & \multicolumn{1}{c}{XPDL 2.1a} & \multicolumn{1}{c}{BPEL 2.0}\tabularnewline
+\hline 
+Deferred Choice & ja & ja & ja\tabularnewline
+\hline 
+Interleaved Parallel Routing & ja & nein & halb\tabularnewline
+\hline 
+Milestone & nein & nein & indirekt\tabularnewline
+\hline 
+Critical Section & ja & nein & halb\tabularnewline
+\hline 
+Interleaved Routing & fast & fast & halb\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+
+\end{table}
+\medskip{}
+
+\item Abbruch- und Vollendigungs-Erzwingungs-Muster\medskip{}
+Einige Muster haben Varianten die das Konzept des Aktivitäts-Abbruchs
+anwenden, wenn sie aktiviert werden oder Aktivitäten zurückgezogen
+werden. Verschiedene Formen der Ausnahmebehandlung in Prozessen basieren
+auch auf Abbruch-Konzepten.\medskip{}
+\begin{table}[H]
+\centering{}\caption{Abbruch- und Vollendigungs-Erzwingungs-Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Muster & BPMN 2.0 & XPDL 2.1a & BPEL 2.0\tabularnewline
+\hline 
+\hline 
+Cancel Task & ja & ja & halb\tabularnewline
+\hline 
+Cancel Case & ja & ja & ja\tabularnewline
+\hline 
+Cancel Region & fast & teils & fast\tabularnewline
+\hline 
+Cancel Multiple Instance Activity & ja & ja & halb\tabularnewline
+\hline 
+Complete Multiple Instance Activity & nein & nein & ja\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\medskip{}
+
+\item Iterations-Muster\medskip{}
+Die Folgenden Muster handeln von der Erfassung wiederholbaren Verhaltens
+in einem Workflow.\medskip{}
+\begin{table}[H]
+\centering{}\caption{Iterations-Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Muster & BPMN 2.0 & XPDL 2.1a & BPEL 2.0\tabularnewline
+\hline 
+\hline 
+Arbitrary Cycles & ja & ja & nein\tabularnewline
+\hline 
+Structured Loop & ja & ja & ja\tabularnewline
+\hline 
+Recursion & ja & nein & ja\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\medskip{}
+
+\item Terminierungs-Muster\medskip{}
+Die folgenden Muster handeln von dem Umständen unter denen ein Workflow
+beendet ist.\medskip{}
+\begin{table}[H]
+\centering{}\caption{Terminierungs-Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Muster & BPMN 2.0 & XPDL 2.1a & BPEL 2.0\tabularnewline
+\hline 
+\hline 
+Implicit Termination & ja & ja & ja\tabularnewline
+\hline 
+Explicit Termination & ja & ja & ja\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\medskip{}
+
+\item Trigger-Muster\medskip{}
+Die folgenden Muster handeln von externen Signalen die benötigt seien
+um bestimmte Aufgaben zu starten.\medskip{}
+\begin{table}[H]
+\centering{}\caption{Trigger-Muster}
+\medskip{}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Muster & BPMN 2.0 & XPDL 2.1a & BPEL 2.0\tabularnewline
+\hline 
+\hline 
+Transient Trigger & nein & nein & nein\tabularnewline
+\hline 
+Persistent Trigger & ja & ja & ja\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\medskip{}
+
+\end{itemize}
+\end{itemize}
+
+\section{Betrachtung der übrigen\protect \\
+3 Musterkategorien}
+\begin{itemize}
+\item Wichtig für die Implementierung einer Sprache in ein vorhandenes Workflowsystem
+sind neben den Steuerungsflussmuster besonders auch die Daten-Muster,
+die die Quellen und Ziele der Daten beschreiben. Die Daten können
+u.a. in Blöcken, Abschnitten, Verzeichnissen, Instanzen, Umgebungen,
+Bedingungen, Tasks, Unterprozessen gelesen und geschrieben werden.
+Sie können interagieren oder auch nicht und sie können transferiert
+werden oder auch nicht oder ein Routing kann stattfinden. Das alles
+beschreiben die Daten-Muster.
+\item Ressourcen-Muster haben besonders eine Bedeutung für Workflowsysteme,
+die damit verglichen werden können.
+\item Ausnahme-Behandlungs-Muster beschreiben die Prinzipien der Ausnahmebehandlung,
+die aus Hochsprachen wie z.B. Java bekannt sind für Prozess-Beschreibungs-Sprachen.
+Besonders XPDL mangelt es an Ausnahme-Behandlungs-Features und besonders
+in BPEL wurde die Ausnahmebehandlung umfangreich standardisiert. BPMN
+unterstützt eine Ausnahmebehandlung, die auch unter umständen Nicht-IT-Experten
+modellieren können.
+\end{itemize}
+
+\section{Zusammenfassung des\protect \\
+Muster-Vergleichs}
+
+
+\chapter{Schlussbetrachtung/Zusammenfassung}
+
+Ausblick
+
+Fazit
+
+\appendix
+\renewcommand{\thepage}{\Roman{page}}
+\setcounter{page}{1}
+
+\settowidth{\nomlabelwidth}{UN/CEFACT}
+\printnomenclature{}
+
+\listoffigures
+
+
+\listoftables
+
+
+\printindex{}
+
+\bibliographystyle{plain}
+\nocite{*}
+\bibliography{ba}
+
+\end{document}
